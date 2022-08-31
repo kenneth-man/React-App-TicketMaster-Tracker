@@ -162,7 +162,6 @@
 			}
 		}
 	},
-	
 	"globals": {
 		"JSX": true
 	}
