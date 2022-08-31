@@ -1,4 +1,4 @@
-const Navbar = () => (
+const Navbar = (): JSX.Element => (
 	<div>Navbar</div>
 );
 

@@ -1,4 +1,4 @@
-const LazyLoadImage = () => (
+const LazyLoadImage = (): JSX.Element => (
 	<div>LazyLoadImage</div>
 );
 

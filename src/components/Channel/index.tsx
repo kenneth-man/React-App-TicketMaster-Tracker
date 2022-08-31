@@ -1,4 +1,4 @@
-const Channel = () => (
+const Channel = (): JSX.Element => (
 	<div>Channel</div>
 );
 

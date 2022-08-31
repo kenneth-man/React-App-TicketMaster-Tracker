@@ -1,4 +1,4 @@
-const Column = () => (
+const Column = (): JSX.Element => (
 	<div>Column</div>
 );
 

@@ -1,4 +1,4 @@
-const Comment = () => (
+const Comment = (): JSX.Element => (
 	<div>Comment</div>
 );
 

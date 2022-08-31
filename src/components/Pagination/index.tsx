@@ -1,4 +1,4 @@
-const Pagination = () => (
+const Pagination = (): JSX.Element => (
 	<div>Pagination</div>
 );
 

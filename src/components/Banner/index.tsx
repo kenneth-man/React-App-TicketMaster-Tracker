@@ -1,4 +1,4 @@
-const Banner = () => (
+const Banner = (): JSX.Element => (
 	<div>Banner</div>
 );
 

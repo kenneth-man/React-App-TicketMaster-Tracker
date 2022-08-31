@@ -1,4 +1,4 @@
-const CommonButton = () => (
+const CommonButton = (): JSX.Element => (
 	<div>CommonButton</div>
 );
 

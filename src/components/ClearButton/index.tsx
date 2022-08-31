@@ -1,4 +1,4 @@
-const ClearButton = () => (
+const ClearButton = (): JSX.Element => (
 	<div>ClearButton</div>
 );
 

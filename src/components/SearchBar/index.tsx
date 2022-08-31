@@ -1,4 +1,4 @@
-const SearchBar = () => (
+const SearchBar = (): JSX.Element => (
 	<div>SearchBar</div>
 );
 

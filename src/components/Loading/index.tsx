@@ -1,4 +1,4 @@
-const Loading = () => (
+const Loading = (): JSX.Element => (
 	<div>Loading</div>
 );
 

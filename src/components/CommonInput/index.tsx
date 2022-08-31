@@ -1,4 +1,4 @@
-const CommonInput = () => (
+const CommonInput = (): JSX.Element => (
 	<div>CommonInput</div>
 );
 

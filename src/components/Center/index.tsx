@@ -1,4 +1,4 @@
-const Center = () => (
+const Center = (): JSX.Element => (
 	<div>Center</div>
 );
 

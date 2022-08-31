@@ -1,4 +1,4 @@
-const Events = () => (
+const Events = (): JSX.Element => (
 	<div>Events</div>
 );
 

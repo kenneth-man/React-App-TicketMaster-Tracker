@@ -1,4 +1,4 @@
-const CommonLink = () => (
+const CommonLink = (): JSX.Element => (
 	<div>CommonLink</div>
 );
 

@@ -1,4 +1,4 @@
-const Row = () => (
+const Row = (): JSX.Element => (
 	<div>Row</div>
 );
 

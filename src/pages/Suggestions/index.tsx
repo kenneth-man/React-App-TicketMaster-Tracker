@@ -1,4 +1,4 @@
-const Suggestions = () => (
+const Suggestions = (): JSX.Element => (
 	<div>Suggestions</div>
 );
 
