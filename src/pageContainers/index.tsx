@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import DetailsContainer from './DetailsContainer';
 import LoginContainer from './LoginContainer';
 import NavBarPageContainer from './NavBarPageContainer';
