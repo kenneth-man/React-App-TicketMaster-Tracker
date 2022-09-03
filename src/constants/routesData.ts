@@ -1,51 +1,63 @@
 import { IRoutesDataProps } from '../utils/interfaces';
 import {
-	Attractions, Classifications, Details, Events, Home, Login, Page404, Profile, Register, Suggestions, Venues
-} from '../pages';
+	DetailsContainer,
+	LoginContainer,
+	NavBarPageContainer,
+	ProfileContainer,
+	RegisterContainer
+} from '../pageContainers';
+import { Page404 } from '../pages';
+import { navBarPageContainerType } from '../utils/enums';
 
 export const routesData: IRoutesDataProps[] = [
 	{
 		path: '/',
-		Component: Home
+		Element: NavBarPageContainer,
+		pageContainerType: navBarPageContainerType.Home
 	},
 	{
 		path: '/Attractions',
-		Component: Attractions
+		Element: NavBarPageContainer,
+		pageContainerType: navBarPageContainerType.Attractions
 	},
 	{
 		path: '/Classifications',
-		Component: Classifications
+		Element: NavBarPageContainer,
+		pageContainerType: navBarPageContainerType.Classifications
 	},
 	{
 		path: '/Events',
-		Component: Events
+		Element: NavBarPageContainer,
+		pageContainerType: navBarPageContainerType.Events
 	},
 	{
 		path: '/Login',
-		Component: Login
+		Element: LoginContainer
 	},
 	{
 		path: '/Register',
-		Component: Register
+		Element: RegisterContainer
 	},
 	{
 		path: '/Suggestions',
-		Component: Suggestions
+		Element: NavBarPageContainer,
+		pageContainerType: navBarPageContainerType.Suggestions
 	},
 	{
 		path: '/Venues',
-		Component: Venues
+		Element: NavBarPageContainer,
+		pageContainerType: navBarPageContainerType.Venues
 	},
 	{
 		path: '/Details:resultName',
-		Component: Details
+		Element: DetailsContainer
 	},
 	{
 		path: '/Profile:userName',
-		Component: Profile
+		Element: ProfileContainer
 	},
 	{
 		path: '*',
-		Component: Page404
+		Element: Page404
 	}
 ];

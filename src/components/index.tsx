@@ -22,7 +22,8 @@ import Row from './Row';
 import SearchBar from './SearchBar';
 
 // barrel default imports to named exports; es6 object single-name syntax
-// therefore can named export components from the '/components' directory instead of multiple import lines
+// therefore can named export components from the '/components' directory
+// (export all from one place) instead of writing multiple import lines
 export {
 	Banner,
 	Center,

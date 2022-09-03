@@ -60,14 +60,27 @@ const App = () => {
 					<Routes>
 						{
 							routesData.map((curr: IRoutesDataProps) => {
-								const { path, Component }: IRoutesDataProps = curr;
+								const { path, Element, pageContainerType }: IRoutesDataProps = curr;
 
 								return (
-									<Route
-										key={path}
-										path={path}
-										element={<Component />}
-									/>
+									pageContainerType
+										? (
+											<Route
+												key={path}
+												path={path}
+												element={(
+													<Element
+														pageContainerType={pageContainerType}
+													/>
+												)}
+											/>
+										) : (
+											<Route
+												key={path}
+												path={path}
+												element={<Element />}
+											/>
+										)
 								);
 							})
 						}

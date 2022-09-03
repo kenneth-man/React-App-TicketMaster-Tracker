@@ -1,4 +1,7 @@
+import { navBarPageContainerType } from './enums';
+
 export interface IRoutesDataProps {
 	path: string;
-	Component: Function;
+	Element: Function;
+	pageContainerType?: navBarPageContainerType;
 }
