@@ -16,13 +16,19 @@ import { Modal, Navbar } from './components';
 import { routesData } from './constants/routesData';
 import { IRoutesDataProps } from './utils/interfaces';
 
+const {
+	REACT_APP_FIREBASE_API_KEY,
+	REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+	REACT_APP_FIREBASE_APP_ID
+}: any = process.env;
+
 const firebaseApp: any = initializeApp({
-	apiKey: 'AIzaSyCyF0kEjeH7uT9SmB_l9KtOa04zQLmJFdE',
-	authDomain: 'adzuna-job-tracker.firebaseapp.com',
-	projectId: 'adzuna-job-tracker',
-	storageBucket: 'adzuna-job-tracker.appspot.com',
-	messagingSenderId: '1095496417984',
-	appId: '1:1095496417984:web:f1ce921ad9498185672325'
+	apiKey: REACT_APP_FIREBASE_API_KEY,
+	authDomain: 'ticketmaster-tracker.firebaseapp.com',
+	projectId: 'ticketmaster-tracker',
+	storageBucket: 'ticketmaster-tracker.appspot.com',
+	messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+	appId: REACT_APP_FIREBASE_APP_ID
 });
 
 const auth: any = getAuth(firebaseApp);
@@ -32,9 +38,9 @@ const App = () => {
 	const [isUserSignedIn, setIsUserSignedIn]: [boolean, Function] = useState<boolean>(false);
 	const [isModalShown, setIsModalShown]: [boolean, Function] = useState<boolean>(false);
 
-	 // onAuthStateChanged parses a 'user' object in the callback function if signed in, otherwise 'user' is null;
-	 // 'auth.currentUser' is the same as 'user'
-	 onAuthStateChanged(auth, (user: any) => (user ? setIsUserSignedIn(true) : setIsUserSignedIn(false)));
+	// onAuthStateChanged parses a 'user' object in the callback function if signed in, otherwise 'user' is null;
+	// 'auth.currentUser' is the same as 'user'
+	onAuthStateChanged(auth, (user: any) => (user ? setIsUserSignedIn(true) : setIsUserSignedIn(false)));
 
 	return (
 		<div className="App">
