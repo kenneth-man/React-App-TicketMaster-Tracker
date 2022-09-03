@@ -46,7 +46,10 @@ export const routesData: IRoutesDataProps[] = [
 	},
 	{
 		path: '/Register',
-		Container: RegisterContainer
+		Container: NavBarPageContainer,
+		Component: Home,
+		ContainerAlt: RegisterContainer,
+		pageContainerType: navBarPageContainerType.Home
 	},
 	{
 		path: '/Suggestions',

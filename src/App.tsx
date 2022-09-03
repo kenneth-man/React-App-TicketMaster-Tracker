@@ -70,7 +70,7 @@ const App = () => {
 										key={path}
 										path={path}
 										element={
-											path === '/'
+											path === '/' || path === '/Register'
 												? (
 													isUserSignedIn
 														? (
