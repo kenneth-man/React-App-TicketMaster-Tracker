@@ -1,4 +1,4 @@
-const DetailsContainer = () => (
+const DetailsContainer = (): JSX.Element => (
 	<div>DetailsContainer</div>
 );
 

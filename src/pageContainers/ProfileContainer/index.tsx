@@ -1,4 +1,4 @@
-const ProfileContainer = () => (
+const ProfileContainer = (): JSX.Element => (
 	<div>ProfileContainer</div>
 );
 

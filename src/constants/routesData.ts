@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { IRoutesDataProps } from '../utils/interfaces';
 import {
 	DetailsContainer,
@@ -6,58 +7,69 @@ import {
 	ProfileContainer,
 	RegisterContainer
 } from '../pageContainers';
-import { Page404 } from '../pages';
+import {
+	Attractions,
+	Classifications,
+	Events,
+	Home,
+	Page404,
+	Suggestions,
+	Venues
+} from '../pages';
 import { navBarPageContainerType } from '../utils/enums';
 
 export const routesData: IRoutesDataProps[] = [
 	{
 		path: '/',
-		Element: NavBarPageContainer,
+		Container: NavBarPageContainer,
+		Component: Home,
+		ContainerAlt: LoginContainer,
 		pageContainerType: navBarPageContainerType.Home
 	},
 	{
 		path: '/Attractions',
-		Element: NavBarPageContainer,
+		Container: NavBarPageContainer,
+		Component: Attractions,
 		pageContainerType: navBarPageContainerType.Attractions
 	},
 	{
 		path: '/Classifications',
-		Element: NavBarPageContainer,
+		Container: NavBarPageContainer,
+		Component: Classifications,
 		pageContainerType: navBarPageContainerType.Classifications
 	},
 	{
 		path: '/Events',
-		Element: NavBarPageContainer,
+		Container: NavBarPageContainer,
+		Component: Events,
 		pageContainerType: navBarPageContainerType.Events
 	},
 	{
-		path: '/Login',
-		Element: LoginContainer
-	},
-	{
 		path: '/Register',
-		Element: RegisterContainer
+		Container: RegisterContainer
 	},
 	{
 		path: '/Suggestions',
-		Element: NavBarPageContainer,
+		Container: NavBarPageContainer,
+		Component: Suggestions,
 		pageContainerType: navBarPageContainerType.Suggestions
 	},
 	{
 		path: '/Venues',
-		Element: NavBarPageContainer,
+		Container: NavBarPageContainer,
+		Component: Venues,
 		pageContainerType: navBarPageContainerType.Venues
 	},
 	{
 		path: '/Details:resultName',
-		Element: DetailsContainer
+		Container: DetailsContainer
 	},
 	{
 		path: '/Profile:userName',
-		Element: ProfileContainer
+		Container: ProfileContainer
 	},
 	{
 		path: '*',
-		Element: Page404
+		Container: Page404
 	}
 ];

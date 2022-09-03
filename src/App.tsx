@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 
@@ -60,27 +61,37 @@ const App = () => {
 					<Routes>
 						{
 							routesData.map((curr: IRoutesDataProps) => {
-								const { path, Element, pageContainerType }: IRoutesDataProps = curr;
+								const {
+									path, Container, pageContainerType, ContainerAlt
+								}: IRoutesDataProps = curr;
 
 								return (
-									pageContainerType
-										? (
-											<Route
-												key={path}
-												path={path}
-												element={(
-													<Element
-														pageContainerType={pageContainerType}
-													/>
-												)}
-											/>
-										) : (
-											<Route
-												key={path}
-												path={path}
-												element={<Element />}
-											/>
-										)
+									<Route
+										key={path}
+										path={path}
+										element={
+											path === '/'
+												? (
+													isUserSignedIn
+														? (
+															<Container
+																pageContainerType={pageContainerType}
+															/>
+														) : (
+															ContainerAlt && <ContainerAlt />
+														)
+												) : (
+													pageContainerType
+														? (
+															<Container
+																pageContainerType={pageContainerType}
+															/>
+														) : (
+															<Container />
+														)
+												)
+										}
+									/>
 								);
 							})
 						}

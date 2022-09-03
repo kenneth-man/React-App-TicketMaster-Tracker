@@ -1,4 +1,4 @@
-const LoginContainer = () => (
+const LoginContainer = (): JSX.Element => (
 	<div>LoginContainer</div>
 );
 

@@ -1,4 +1,4 @@
-const RegisterContainer = () => (
+const RegisterContainer = (): JSX.Element => (
 	<div>RegisterContainer</div>
 );
 
