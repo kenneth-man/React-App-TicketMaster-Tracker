@@ -9,5 +9,5 @@ and learn how to use React-Spring for parallax scrolling effect.
 
 <br>
 
-- __Work in progress__
+- __Work in progress__ 
 
