@@ -17,7 +17,7 @@ import Navbar from './Navbar';
 import Page from './Page';
 import Pagination from './Pagination';
 import Result from './Result';
-import ResultContainer from './ResultContainer';
+import ResultList from './ResultList';
 import Row from './Row';
 import SearchBar from './SearchBar';
 
@@ -41,7 +41,7 @@ export {
 	Page,
 	Pagination,
 	Result,
-	ResultContainer,
+	ResultList,
 	Row,
 	SearchBar
 };
