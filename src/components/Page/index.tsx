@@ -1,5 +1,5 @@
 const Page = (): JSX.Element => (
-	<div>Page</div>
+	<div className="Page">Page</div>
 );
 
 export default Page;
