@@ -62,7 +62,7 @@ const App = () => {
 						{
 							routesData.map((curr: IRoutesDataProps) => {
 								const {
-									path, Container, pageContainerType, ContainerAlt
+									path, Container, Component, ContainerAlt
 								}: IRoutesDataProps = curr;
 
 								return (
@@ -75,16 +75,16 @@ const App = () => {
 													isUserSignedIn
 														? (
 															<Container
-																pageContainerType={pageContainerType}
+																Component={Component}
 															/>
 														) : (
 															ContainerAlt && <ContainerAlt />
 														)
 												) : (
-													pageContainerType
+													Component
 														? (
 															<Container
-																pageContainerType={pageContainerType}
+																Component={Component}
 															/>
 														) : (
 															<Container />

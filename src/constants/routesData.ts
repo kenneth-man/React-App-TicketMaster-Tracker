@@ -16,52 +16,44 @@ import {
 	Suggestions,
 	Venues
 } from '../pages';
-import { navBarPageContainerType } from '../utils/enums';
 
 export const routesData: IRoutesDataProps[] = [
 	{
 		path: '/',
 		Container: NavBarPageContainer,
 		Component: Home,
-		ContainerAlt: LoginContainer,
-		pageContainerType: navBarPageContainerType.Home
+		ContainerAlt: LoginContainer
 	},
 	{
 		path: '/Attractions',
 		Container: NavBarPageContainer,
-		Component: Attractions,
-		pageContainerType: navBarPageContainerType.Attractions
+		Component: Attractions
 	},
 	{
 		path: '/Classifications',
 		Container: NavBarPageContainer,
-		Component: Classifications,
-		pageContainerType: navBarPageContainerType.Classifications
+		Component: Classifications
 	},
 	{
 		path: '/Events',
 		Container: NavBarPageContainer,
-		Component: Events,
-		pageContainerType: navBarPageContainerType.Events
+		Component: Events
 	},
 	{
 		path: '/Register',
 		Container: NavBarPageContainer,
 		Component: Home,
-		ContainerAlt: RegisterContainer,
-		pageContainerType: navBarPageContainerType.Home
+		ContainerAlt: RegisterContainer
 	},
 	{
 		path: '/Suggestions',
 		Container: NavBarPageContainer,
-		Component: Suggestions,
-		pageContainerType: navBarPageContainerType.Suggestions
+		Component: Suggestions
 	},
 	{
 		path: '/Venues',
 		Container: NavBarPageContainer,
-		Component: Venues,
-		pageContainerType: navBarPageContainerType.Venues
+		Component: Venues
 	},
 	{
 		path: '/Details:resultName',
