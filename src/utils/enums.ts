@@ -1,3 +1,3 @@
-export enum placHolder {
+export enum placeHolder {
 
 }

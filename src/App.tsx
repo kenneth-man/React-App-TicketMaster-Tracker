@@ -13,7 +13,8 @@ import { getFirestore } from 'firebase/firestore';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContextProvider from './context';
-import { Modal, Navbar } from './components';
+import { ModalContainer } from './componentContainers';
+import { Navbar } from './components';
 import { routesData } from './constants/routesData';
 import { IRoutesDataProps } from './utils/interfaces';
 
@@ -56,7 +57,7 @@ const App = () => {
 
 					{/* rendering here instead of writing '{isModalShown && <Modal />}';
 					so i can transition the modal being displayed/hidden */}
-					<Modal />
+					<ModalContainer />
 
 					<Routes>
 						{
