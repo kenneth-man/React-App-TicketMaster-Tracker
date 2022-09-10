@@ -6,7 +6,7 @@ import { Login } from '../../pages';
 
 const LoginContainer = (): JSX.Element => {
 	const {
-		auth, LoginWithGoogle, scrollToTop, isLoading, setIsLoading
+		auth, LoginWithGoogle, clearInputs, scrollToTop, isLoading, setIsLoading
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	}: any = useContext(Context);
 

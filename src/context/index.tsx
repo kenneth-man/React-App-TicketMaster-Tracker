@@ -25,6 +25,9 @@ const ContextProvider = ({
 	const [loading, setLoading]: [boolean, Function] = useState<boolean>(false);
 	const provider: GoogleAuthProvider = new GoogleAuthProvider();
 
+	// clear all input element states to empty string
+	const clearInputs = (inputSetStatesArray: Function[]): void => inputSetStatesArray.forEach((curr: Function) => curr(''));
+
 	// scroll to top of specified DOM element
 	const scrollToTop = (): void => {
 		const appElement: HTMLElement | null = document.querySelector('.App');
@@ -275,6 +278,7 @@ const ContextProvider = ({
 				setError,
 				loading,
 				setLoading,
+				clearInputs,
 				scrollToTop,
 				scrollToBottom,
 				LoginWithGoogle,

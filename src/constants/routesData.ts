@@ -3,7 +3,7 @@ import { IRoutesDataProps } from '../utils/interfaces';
 import {
 	DetailsContainer,
 	LoginContainer,
-	NavBarPageContainer,
+	MainPageContainer,
 	ProfileContainer,
 	RegisterContainer
 } from '../pageContainers';
@@ -20,39 +20,39 @@ import {
 export const routesData: IRoutesDataProps[] = [
 	{
 		path: '/',
-		Container: NavBarPageContainer,
+		Container: MainPageContainer,
 		Component: Home,
 		ContainerAlt: LoginContainer
 	},
 	{
 		path: '/Attractions',
-		Container: NavBarPageContainer,
+		Container: MainPageContainer,
 		Component: Attractions
 	},
 	{
 		path: '/Classifications',
-		Container: NavBarPageContainer,
+		Container: MainPageContainer,
 		Component: Classifications
 	},
 	{
 		path: '/Events',
-		Container: NavBarPageContainer,
+		Container: MainPageContainer,
 		Component: Events
 	},
 	{
 		path: '/Register',
-		Container: NavBarPageContainer,
+		Container: MainPageContainer,
 		Component: Home,
 		ContainerAlt: RegisterContainer
 	},
 	{
 		path: '/Suggestions',
-		Container: NavBarPageContainer,
+		Container: MainPageContainer,
 		Component: Suggestions
 	},
 	{
 		path: '/Venues',
-		Container: NavBarPageContainer,
+		Container: MainPageContainer,
 		Component: Venues
 	},
 	{

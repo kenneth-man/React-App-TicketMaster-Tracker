@@ -1,8 +1,3 @@
-export enum navBarPageContainerType {
-	Home,
-	Attractions,
-	Classifications,
-	Events,
-	Suggestions,
-	Venues
+export enum placHolder {
+
 }
