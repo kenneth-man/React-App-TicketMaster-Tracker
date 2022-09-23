@@ -1,7 +1,9 @@
 /* eslint-disable max-len */
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { createContext, useState, useEffect } from 'react';
+import React, {
+	createContext, useState, useEffect, ChangeEvent
+} from 'react';
 import {
 	signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, updateProfile
 } from 'firebase/auth';
@@ -24,6 +26,10 @@ const ContextProvider = ({
 	const [error, setError]: [unknown | undefined, Function] = useState<unknown | undefined>(undefined);
 	const [loading, setLoading]: [boolean, Function] = useState<boolean>(false);
 	const provider: GoogleAuthProvider = new GoogleAuthProvider();
+
+	const handleOnChange = (event: ChangeEvent<HTMLInputElement>, setState: Function): void => {
+		setState(event.target.value);
+	};
 
 	// clear all input element states to empty string
 	const clearInputs = (inputSetStatesArray: Function[]): void => inputSetStatesArray.forEach((curr: Function) => curr(''));
@@ -293,7 +299,8 @@ const ContextProvider = ({
 				auth,
 				db,
 				isModalShown,
-				setIsModalShown
+				setIsModalShown,
+				handleOnChange
 			}}
 		>
 			{children}

@@ -42,7 +42,7 @@ const App = () => {
 
 	// onAuthStateChanged parses a 'user' object in the callback function if signed in, otherwise 'user' is null;
 	// 'auth.currentUser' is the same as 'user'
-	onAuthStateChanged(auth, (user: any) => (user ? setIsUserSignedIn(true) : setIsUserSignedIn(false)));
+	onAuthStateChanged(auth, (user: any) => (setIsUserSignedIn(!!user)));
 
 	return (
 		<div className="App">
