@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { ILoginProps } from './ILoginProps';
-import { CommonInput } from '../../components';
+import { Page, CommonInput } from '../../components';
+import ticketMasterLogo from '../../res/images/ticketmaster-logo.png';
 
 const Login = ({
 	loginEmail,
@@ -10,8 +11,8 @@ const Login = ({
 	handleOnChange,
 	isLoading
 }: ILoginProps): JSX.Element => (
-	<div>
-		<h1>HELLO</h1>
+	<Page>
+		<img src={ticketMasterLogo} alt="ticket master logo" />
 		<form>
 			<CommonInput
 				state={loginEmail}
@@ -30,7 +31,7 @@ const Login = ({
 				disabled={isLoading}
 			/>
 		</form>
-	</div>
+	</Page>
 );
 
 export default Login;

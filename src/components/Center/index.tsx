@@ -7,7 +7,8 @@ const Center = ({
 	fullPageSection,
 	alignItems,
 	justifyContent,
-	extraClasses
+	extraClasses,
+	inlineStyle
 }: IFlexComponentProps): JSX.Element => (
 	<div
 		className={`
@@ -19,8 +20,9 @@ const Center = ({
 			${justifyContent || 'justify-center'}
 			${extraClasses}
 		`}
+		style={inlineStyle}
 	>
-		{ children }
+		{children}
 	</div>
 );
 

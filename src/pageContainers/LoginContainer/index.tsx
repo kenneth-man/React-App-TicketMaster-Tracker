@@ -16,10 +16,6 @@ const LoginContainer = (): JSX.Element => {
 	const [loginEmail, setLoginEmail]: [string, Function] = useState<string>('');
 	const [loginPassword, setLoginPassword]: [string, Function] = useState<string>('');
 
-	useEffect(() => {
-		console.log(loginEmail, loginPassword);
-	}, [loginEmail, loginPassword]);
-
 	return (
 		<Login
 			loginEmail={loginEmail}

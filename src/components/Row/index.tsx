@@ -7,7 +7,8 @@ const Row = ({
 	fullPageSection,
 	alignItems,
 	justifyContent,
-	extraClasses
+	extraClasses,
+	inlineStyle
 }: IFlexComponentProps): JSX.Element => (
 	<div
 		className={`
@@ -19,8 +20,9 @@ const Row = ({
 			${justifyContent}
 			${extraClasses}
 		`}
+		style={inlineStyle}
 	>
-		{ children }
+		{children}
 	</div>
 );
 

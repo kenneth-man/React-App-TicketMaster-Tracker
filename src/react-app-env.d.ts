@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // type definitions are needed by TypeScript to know how to handle file extensions it doesn't recognize ootb
 // https://stackoverflow.com/questions/54121536/typescript-module-svg-has-no-exported-member-reactcomponent
 declare module '*.svg' {
@@ -9,13 +10,11 @@ declare module '*.svg' {
 }
 
 declare module '*.png' {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const value: any;
 	export default value;
 }
 
 declare module '*.jpg' {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const value: any;
 	export default value;
 }
