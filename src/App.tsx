@@ -45,7 +45,7 @@ const App = () => {
 	onAuthStateChanged(auth, (user: any) => (setIsUserSignedIn(!!user)));
 
 	return (
-		<div className="App">
+		<div className="flex flex-col h-full overflow-y-scroll overflow-x-hidden">
 			<BrowserRouter>
 				<ContextProvider
 					auth={auth}

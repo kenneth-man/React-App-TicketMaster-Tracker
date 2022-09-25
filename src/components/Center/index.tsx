@@ -15,7 +15,7 @@ const Center = ({
 			flex
 			${fullWidth ? 'w-full' : 'w-max'}
 			${fullHeight ? 'h-full' : 'w-max'}
-			${fullPageSection ? 'min-h-full' : 'min-h-0'}
+			${fullPageSection && 'min-h-full'}
 			${alignItems || 'items-center'}
 			${justifyContent || 'justify-center'}
 			${extraClasses}

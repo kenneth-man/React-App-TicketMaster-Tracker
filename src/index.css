@@ -2,8 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --primary: #026CDF;
+    --secondary: #1F262D;
+    --tertiary: #00FFFF;
+    --quaternary: #61737C;
+    --quinary: #C8D2D7;
+    --senary: #E3ECF1;
+}
+
 /* avoid repeating same styling for text elements used many times */
 @layer base {
+    h1,h2,h3,h4,h5,h6,p,label {
+        @apply text-white
+    }
+
     h1 {
         @apply text-lg font-light sm:text-2xl md:text-4xl; 
     }
@@ -26,7 +39,54 @@
 
 html,
 body,
-#root,
-.App {
+#root {
     height: 100%;
+}
+
+.text-pri {
+    color: var(--primary);
+}
+
+.text-sec {
+    color: var(--secondary);
+}
+
+.text-ter {
+    color: var(--tertiary);
+}
+
+.text-qua {
+    color: var(--quaternary);
+}
+
+.text-qui {
+    color: var(--quinary);
+}
+
+.text-sen {
+    color: var(--senary);
+}
+
+.bg-pri {
+    background-color: var(--primary);
+}
+
+.bg-sec {
+    background-color: var(--secondary);
+}
+
+.bg-ter {
+    background-color: var(--tertiary);
+}
+
+.bg-qua {
+    background-color: var(--quaternary);
+}
+
+.bg-qui {
+    background-color: var(--quinary);
+}
+
+.bg-sen {
+    background-color: var(--senary);
 }

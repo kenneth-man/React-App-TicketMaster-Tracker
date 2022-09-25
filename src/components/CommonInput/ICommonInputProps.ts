@@ -8,5 +8,6 @@ export interface ICommonInputProps {
     type: string;
     placeHolder: string;
     disabled: boolean;
+    name?: string;
     extraClasses?: string;
 }

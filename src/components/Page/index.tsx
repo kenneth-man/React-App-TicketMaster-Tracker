@@ -10,7 +10,7 @@ const Page = ({
 		alignItems={alignItems}
 		justifyContent={justifyContent}
 		extraClasses={`
-			Page flex-1
+			flex-1 bg-blue-200
 			${extraClasses}
 		`}
 		inlineStyle={

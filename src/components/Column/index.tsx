@@ -14,8 +14,8 @@ const Column = ({
 		className={`
 			flex flex-col
 			${fullWidth ? 'w-full' : 'w-max'}
-			${fullHeight ? 'h-full' : 'w-max'}
-			${fullPageSection ? 'min-h-full' : 'min-h-0'}
+			${fullHeight ? 'h-full' : 'h-max'}
+			${fullPageSection && 'min-h-full'}
 			${alignItems || 'items-center'}
 			${justifyContent}
 			${extraClasses}
