@@ -16,6 +16,10 @@ const LoginContainer = (): JSX.Element => {
 	const [loginEmail, setLoginEmail]: [string, Function] = useState<string>('');
 	const [loginPassword, setLoginPassword]: [string, Function] = useState<string>('');
 
+	const loginWithEmailAndPassword = async (): Promise<void> => {
+		console.log('test');
+	};
+
 	return (
 		<Login
 			loginEmail={loginEmail}
@@ -23,6 +27,8 @@ const LoginContainer = (): JSX.Element => {
 			setLoginEmail={setLoginEmail}
 			setLoginPassword={setLoginPassword}
 			handleOnChange={handleOnChange}
+			loginWithEmailAndPassword={loginWithEmailAndPassword}
+			loginWithGoogle={LoginWithGoogle}
 			isLoading={isLoading}
 		/>
 	);

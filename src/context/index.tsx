@@ -309,3 +309,8 @@ const ContextProvider = ({
 };
 
 export default ContextProvider;
+
+// TODO:
+// - add CommonButton styling, add register CommonLink styling, loginWithEmailAndPassword functionality to Login
+// - fix Login styling
+// - Responsiveness for every page

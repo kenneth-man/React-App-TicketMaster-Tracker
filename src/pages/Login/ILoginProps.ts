@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, MouseEventHandler } from 'react';
 
 export interface ILoginProps {
     loginEmail: string;
@@ -6,5 +6,7 @@ export interface ILoginProps {
 	setLoginEmail: Function;
 	setLoginPassword: Function;
 	handleOnChange: ChangeEventHandler<HTMLInputElement>;
+	loginWithEmailAndPassword: MouseEventHandler<HTMLButtonElement>
+	loginWithGoogle: MouseEventHandler<HTMLButtonElement>;
 	isLoading: boolean;
 }

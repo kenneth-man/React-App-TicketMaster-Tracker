@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
 import { ILoginProps } from './ILoginProps';
-import { Page, CommonInput, Column } from '../../components';
+import {
+	Page, Column, CommonInput, CommonButton, CommonLink
+} from '../../components';
 import ticketMasterBackground from '../../res/images/ticketmaster-background.jpeg';
 import ticketMasterLogo from '../../res/images/ticketmaster-logo.png';
 
@@ -11,6 +13,8 @@ const Login = ({
 	setLoginEmail,
 	setLoginPassword,
 	handleOnChange,
+	loginWithEmailAndPassword,
+	loginWithGoogle,
 	isLoading
 }: ILoginProps): JSX.Element => (
 	<Page
@@ -38,6 +42,7 @@ const Login = ({
 		<form
 			className="flex flex-col space-y-8"
 		>
+			<h1>Sign in with Email and Password</h1>
 			<Column
 				extraClasses="space-y-2"
 			>
@@ -74,7 +79,30 @@ const Login = ({
 					name="loginPassword"
 				/>
 			</Column>
+			<CommonButton
+				onClick={loginWithEmailAndPassword}
+				type="button"
+			>
+				Login
+			</CommonButton>
 		</form>
+		<Column
+			extraClasses="space-y-8"
+		>
+			<h1>Sign in with your Google account</h1>
+			<CommonButton
+				onClick={loginWithGoogle}
+				type="button"
+			>
+				Google
+			</CommonButton>
+		</Column>
+		<CommonLink
+			isRouterLink
+			href="/Register"
+		>
+			Don&apos;t have an account? Click here to Register!
+		</CommonLink>
 	</Page>
 );
 
