@@ -243,14 +243,15 @@ const ContextProvider = ({
 				if (!doesUserAlreadyExist) {
 					// if registered via email, give the user a 'diplayName' and 'photoURL'; these properties come with google accounts
 					if (!displayName && !photoURL) {
+						const newDisplayName: string = email.split('@')[0];
 						// doesn't cause state change of 'auth' object so doesn't rerender components that use 'auth';
 						// therefore, have to set 'navbarDisplayName' manually and 'createDocument' with 'auth.currentUser.displayName', '...photoURL'
 						await updateProfile(auth.currentUser, {
-							displayName: email.split('@')[0],
-							photoURL: 'https://www.confluent.io/hub/static/6111e3c2b6434cf46ee6a207040498d5/b6d35/reddit.png'
+							displayName: newDisplayName,
+							photoURL: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
 						});
 
-						setNavbarDisplayName(auth.currentUser.email.split('@')[0]);
+						setNavbarDisplayName(newDisplayName);
 					} else {
 						setNavbarDisplayName(displayName);
 					}
@@ -311,6 +312,7 @@ const ContextProvider = ({
 export default ContextProvider;
 
 // TODO:
-// - add CommonButton styling, add register CommonLink styling, loginWithEmailAndPassword functionality to Login
-// - fix Login styling
+// - loginWithEmailAndPassword functionality to Login
+// - Loading component (modal absolute??)
+
 // - Responsiveness for every page

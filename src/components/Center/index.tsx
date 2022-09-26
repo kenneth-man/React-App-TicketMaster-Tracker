@@ -13,8 +13,8 @@ const Center = ({
 	<div
 		className={`
 			flex
-			${fullWidth ? 'w-full' : 'w-max'}
-			${fullHeight ? 'h-full' : 'w-max'}
+			${fullWidth && 'w-full'}
+			${fullHeight && 'h-full'}
 			${fullPageSection && 'min-h-full'}
 			${alignItems || 'items-center'}
 			${justifyContent || 'justify-center'}

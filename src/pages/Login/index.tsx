@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-unused-vars */
 import { ILoginProps } from './ILoginProps';
 import {
 	Page, Column, CommonInput, CommonButton, CommonLink
@@ -20,19 +19,21 @@ const Login = ({
 	<Page
 		justifyContent="justify-start"
 		backgroundImage={ticketMasterBackground}
-		extraClasses="space-y-8"
+		extraClasses="space-y-14 py-16 px-4"
 	>
 		<img
 			src={ticketMasterLogo}
 			alt="ticket master logo"
-			className="w-96"
+			className="w-96 h-20 object-cover"
 		/>
 		<Column
 			fullWidth
-			extraClasses="space-y-8 px-40"
+			extraClasses="space-y-4 sm:px-20 lg:px-80"
 		>
 			<h1>TicketMaster Tracker</h1>
-			<p>
+			<p
+				className="line-clamp line-clamp-4"
+			>
 				Ticketmaster is the world&apos;s largest ticket distribution company in the United States,
 				completely dominating its market niche. The company distributes tickets for more than 10,000
 				clients whose events range from professional wrestling matches and rock concerts to Broadway
@@ -40,41 +41,41 @@ const Login = ({
 			</p>
 		</Column>
 		<form
-			className="flex flex-col space-y-8"
+			className="flex flex-col items-center space-y-4 w-full sm:w-max"
 		>
-			<h1>Sign in with Email and Password</h1>
+			<h1>Login with Email and Password</h1>
 			<Column
-				extraClasses="space-y-2"
+				extraClasses="space-y-1 !w-full !sm:w-max"
 			>
 				<label
 					htmlFor="loginEmail"
 				>
-					Login Email
+					Email
 				</label>
 				<CommonInput
 					state={loginEmail}
 					setState={setLoginEmail}
 					onChange={handleOnChange}
 					type="text"
-					placeHolder="Input your email address..."
+					placeHolder="Input your account email address..."
 					disabled={isLoading}
 					name="loginEmail"
 				/>
 			</Column>
 			<Column
-				extraClasses="space-y-2"
+				extraClasses="space-y-1 !w-full !sm:w-max"
 			>
 				<label
 					htmlFor="loginPassword"
 				>
-						Login Password
+					Password
 				</label>
 				<CommonInput
 					state={loginPassword}
 					setState={setLoginPassword}
 					onChange={handleOnChange}
 					type="password"
-					placeHolder="Input your password..."
+					placeHolder="Input your account password..."
 					disabled={isLoading}
 					name="loginPassword"
 				/>
@@ -87,19 +88,20 @@ const Login = ({
 			</CommonButton>
 		</form>
 		<Column
-			extraClasses="space-y-8"
+			extraClasses="space-y-4 !w-full !sm:w-max"
 		>
-			<h1>Sign in with your Google account</h1>
+			<h1>...Or login with your Google account</h1>
 			<CommonButton
 				onClick={loginWithGoogle}
 				type="button"
 			>
-				Google
+				Google Login
 			</CommonButton>
 		</Column>
 		<CommonLink
 			isRouterLink
 			href="/Register"
+			extraClasses="text-white text-center decoration-white"
 		>
 			Don&apos;t have an account? Click here to Register!
 		</CommonLink>

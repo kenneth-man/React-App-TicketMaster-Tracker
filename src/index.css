@@ -17,8 +17,12 @@
         @apply text-white
     }
 
+    h1,h2,h3,h4,h5,h6 {
+        @apply text-center
+    }
+
     h1 {
-        @apply text-lg font-light sm:text-2xl md:text-4xl; 
+        @apply text-lg font-light sm:text-2xl; 
     }
     
     h2 {
@@ -89,4 +93,30 @@ body,
 
 .bg-sen {
     background-color: var(--senary);
+}
+
+.line-clamp {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.line-clamp-1 {
+	-webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+	-webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+	-webkit-line-clamp: 3;
+}
+
+.line-clamp-4 {
+	-webkit-line-clamp: 4;
+}
+
+.line-clamp-5 {
+	-webkit-line-clamp: 5;
 }

@@ -9,7 +9,9 @@ const CommonButton = ({
 		onClick={onClick}
 		type={type}
 		className={`
-			bg-pri
+			bg-pri text-white font-thin px-6 py-2 rounded-full uppercase border border-black/5
+			hover:shadow-white hover:shadow-md hover:-translate-y-0.5 hover:brightness-110
+			active:shadow-none active:translate-y-0
 			${Children.count(children) > 1 && 'space-x-2'}
 			${extraClasses}
 		`}

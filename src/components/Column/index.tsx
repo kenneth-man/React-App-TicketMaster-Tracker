@@ -13,8 +13,8 @@ const Column = ({
 	<div
 		className={`
 			flex flex-col
-			${fullWidth ? 'w-full' : 'w-max'}
-			${fullHeight ? 'h-full' : 'h-max'}
+			${fullWidth && 'w-full'}
+			${fullHeight && 'h-full'}
 			${fullPageSection && 'min-h-full'}
 			${alignItems || 'items-center'}
 			${justifyContent}
