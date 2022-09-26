@@ -45,7 +45,7 @@ const Login = ({
 		>
 			<h1>Login with Email and Password</h1>
 			<Column
-				extraClasses="space-y-1 !w-full !sm:w-max"
+				extraClasses="space-y-1 w-full sm:w-max"
 			>
 				<label
 					htmlFor="loginEmail"
@@ -63,7 +63,7 @@ const Login = ({
 				/>
 			</Column>
 			<Column
-				extraClasses="space-y-1 !w-full !sm:w-max"
+				extraClasses="space-y-1 w-full sm:w-max"
 			>
 				<label
 					htmlFor="loginPassword"
@@ -88,7 +88,7 @@ const Login = ({
 			</CommonButton>
 		</form>
 		<Column
-			extraClasses="space-y-4 !w-full !sm:w-max"
+			extraClasses="space-y-4 w-full sm:w-max"
 		>
 			<h1>...Or login with your Google account</h1>
 			<CommonButton
