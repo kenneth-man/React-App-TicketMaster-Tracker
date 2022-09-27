@@ -10,7 +10,7 @@ import { Login } from '../../pages';
 const LoginContainer = (): JSX.Element => {
 	const {
 		auth, LoginWithGoogle, clearInputs, scrollToTop, isLoading, setIsLoading, handleOnChange
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	}: any = useContext(Context);
 
 	const [loginEmail, setLoginEmail]: [string, Function] = useState<string>('');
