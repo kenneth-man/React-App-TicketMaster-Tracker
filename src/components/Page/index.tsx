@@ -1,8 +1,9 @@
 import { IPageProps } from './IPageProps';
-import Column from '../Column';
+// eslint-disable-next-line import/no-cycle
+import { Column, Loading } from '..';
 
 const Page = ({
-	children, alignItems, justifyContent, backgroundImage, backgroundGradient,
+	children, isLoading, alignItems, justifyContent, backgroundImage, backgroundGradient,
 	backgroundSize, backgroundPosition, backgroundAttachment, backgroundRepeat, extraClasses
 }: IPageProps): JSX.Element => (
 	<Column
@@ -31,7 +32,7 @@ const Page = ({
 			)
 		}
 	>
-		{children}
+		{isLoading ? <Loading /> : children}
 	</Column>
 );
 

@@ -24,6 +24,11 @@ declare module '*.jpeg' {
 	export default value;
 }
 
+declare module '*.gif' {
+	const value: any;
+	export default value;
+}
+
 // type definition to use process.env variables
 declare global {
 	namespace NodeJS {

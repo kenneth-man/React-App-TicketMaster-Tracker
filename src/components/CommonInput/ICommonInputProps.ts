@@ -7,7 +7,7 @@ export interface ICommonInputProps {
     onChange: (event: ChangeEvent<HTMLInputElement>, setState: Function) => void;
     type: string;
     placeHolder: string;
-    disabled: boolean;
+    disabled?: boolean;
     name?: string;
     extraClasses?: string;
 }

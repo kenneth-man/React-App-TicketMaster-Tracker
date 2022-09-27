@@ -313,6 +313,11 @@ export default ContextProvider;
 
 // TODO:
 // - loginWithEmailAndPassword functionality to Login
-// - Loading component (modal absolute??)
+// - turn off dependancy cycle checking eslint and removed eslint comments
 
-// - Responsiveness for every page
+// - Register page
+// - Navbar
+// - Mobile modal for Navbar
+// - Home page react spring
+
+// ... Responsiveness for every page

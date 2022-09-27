@@ -19,6 +19,7 @@ const Login = ({
 	<Page
 		justifyContent="justify-start"
 		backgroundImage={ticketMasterBackground}
+		isLoading={isLoading}
 		extraClasses="space-y-14 py-16 px-4"
 	>
 		<img
@@ -58,7 +59,6 @@ const Login = ({
 					onChange={handleOnChange}
 					type="text"
 					placeHolder="Input your account email address..."
-					disabled={isLoading}
 					name="loginEmail"
 				/>
 			</Column>
@@ -76,7 +76,6 @@ const Login = ({
 					onChange={handleOnChange}
 					type="password"
 					placeHolder="Input your account password..."
-					disabled={isLoading}
 					name="loginPassword"
 				/>
 			</Column>
