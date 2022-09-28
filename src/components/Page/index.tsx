@@ -35,8 +35,12 @@ const Page = ({
 	>
 		{
 			error
-				? <Error />
-				: (
+				? (
+					<Error
+						message={error.message}
+						code={error.code}
+					/>
+				) : (
 					loading
 						? <Loading />
 						: children

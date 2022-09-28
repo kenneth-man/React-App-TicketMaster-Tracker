@@ -24,7 +24,11 @@ const ContextProvider = ({
 	setIsModalShown
 }: IContextProps) => {
 	const [navbarDisplayName, setNavbarDisplayName]: [string, Function] = useState<string>('');
-	const [error, setError]: [IErrorProps | undefined, Function] = useState<IErrorProps | undefined>(undefined);
+	const [error, setError]: [IErrorProps | undefined, Function] = useState<IErrorProps | undefined>({
+		message: 'iuybnn',
+		code: '797',
+		inputSetStates: []
+	});
 	const [loading, setLoading]: [boolean, Function] = useState<boolean>(false);
 	const provider: GoogleAuthProvider = new GoogleAuthProvider();
 
@@ -285,7 +289,6 @@ const ContextProvider = ({
 		if (error) {
 			clearInputs(error.inputSetStates);
 			setLoading(false);
-			// alert(`Login Error: ${error.message}, Error Code: ${error.code}`);
 		}
 	}, [error]);
 
@@ -325,7 +328,7 @@ const ContextProvider = ({
 export default ContextProvider;
 
 // TODO:
-// - loginWithEmailAndPassword functionality to Login
+// - test Login and Register works
 // - add icons to Login and Register buttons
 // - turn off dependancy cycle checking eslint and removed eslint comments
 

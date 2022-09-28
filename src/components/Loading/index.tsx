@@ -4,7 +4,7 @@ import loadingGif from '../../res/images/loading-dark.gif';
 
 const Loading = (): JSX.Element => (
 	<Row
-		extraClasses="space-x-2"
+		extraClasses="m-auto space-x-2 dialog"
 	>
 		<h1 className="text-white">
 			Loading...
