@@ -56,11 +56,11 @@ export const routesData: IRoutesDataProps[] = [
 		Component: Venues
 	},
 	{
-		path: '/Details:resultName',
+		path: '/Details/:resultName',
 		Container: DetailsContainer
 	},
 	{
-		path: '/Profile:userName',
+		path: '/Profile/:userName',
 		Container: ProfileContainer
 	},
 	{
