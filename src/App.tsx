@@ -11,7 +11,9 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {
+	BrowserRouter, Routes, Route
+} from 'react-router-dom';
 import ContextProvider from './context';
 import { ModalContainer } from './componentContainers';
 import { Navbar } from './components';

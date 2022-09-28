@@ -4,7 +4,7 @@ import { IPageProps } from './IPageProps';
 import { Column, Error, Loading } from '..';
 
 const Page = ({
-	children, loading, error, alignItems, justifyContent, backgroundImage, backgroundGradient,
+	children, loading, error, setError, alignItems, justifyContent, backgroundImage, backgroundGradient,
 	backgroundSize, backgroundPosition, backgroundAttachment, backgroundRepeat, extraClasses
 }: IPageProps): JSX.Element => (
 	<Column
@@ -39,6 +39,7 @@ const Page = ({
 					<Error
 						message={error.message}
 						code={error.code}
+						setError={setError}
 					/>
 				) : (
 					loading

@@ -5,6 +5,7 @@ export interface IPageProps {
     children: ReactNode;
     loading: boolean;
     error: IErrorProps | undefined;
+    setError: Function;
     alignItems?: 'items-start' | 'items-end' | 'items-center' | 'items-baseline' | 'items-stretch';
     justifyContent?: 'justify-start' | 'justify-end' | 'justify-center' | 'justify-between' | 'justify-around'
     | 'justify-evenly';

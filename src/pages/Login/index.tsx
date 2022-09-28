@@ -4,6 +4,8 @@ import {
 	Column, CommonInput, CommonButton, CommonLink
 } from '../../components';
 import { PageContainer } from '../../componentContainers';
+import { ReactComponent as GoogleIcon } from '../../res/icons/google3.svg';
+import { ReactComponent as LoginIcon } from '../../res/icons/enter.svg';
 import ticketMasterBackground from '../../res/images/ticketmaster-background.jpeg';
 import ticketMasterLogo from '../../res/images/ticketmaster-logo.png';
 
@@ -82,7 +84,8 @@ const Login = ({
 			<CommonButton
 				type="submit"
 			>
-				Login
+				<h2>Login</h2>
+				<LoginIcon />
 			</CommonButton>
 		</form>
 		<Column
@@ -93,7 +96,8 @@ const Login = ({
 				onClick={loginWithGoogle}
 				type="button"
 			>
-				Google Login
+				<h2>Google Login</h2>
+				<GoogleIcon />
 			</CommonButton>
 		</Column>
 		<CommonLink

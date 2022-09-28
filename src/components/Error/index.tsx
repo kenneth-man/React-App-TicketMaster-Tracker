@@ -1,12 +1,12 @@
 /* eslint-disable import/no-cycle */
-import { Column } from '..';
+import { Column, CommonButton } from '..';
 import { IErrorProps } from './IErrorProps';
 import { ReactComponent as ErrorIcon } from '../../res/icons/error.svg';
 
-const Error = ({ message, code }: IErrorProps): JSX.Element => (
+const Error = ({ message, code, setError }: IErrorProps): JSX.Element => (
 	<Column
 		alignItems="items-center"
-		extraClasses="m-auto space-y-2 dialog"
+		extraClasses="m-auto space-y-2 p-4 dialog"
 	>
 		<ErrorIcon
 			fill="white"
@@ -30,6 +30,16 @@ const Error = ({ message, code }: IErrorProps): JSX.Element => (
 				{code}
 			</h1>
 		</Column>
+		<CommonButton
+			type="button"
+			onClick={() => setError(undefined)}
+		>
+			<h3
+				className="text-sm"
+			>
+				Close
+			</h3>
+		</CommonButton>
 	</Column>
 );
 

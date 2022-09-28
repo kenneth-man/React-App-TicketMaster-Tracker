@@ -8,12 +8,13 @@ const PageContainer = ({
 	children, alignItems, justifyContent, backgroundImage, backgroundGradient,
 	backgroundSize, backgroundPosition, backgroundAttachment, backgroundRepeat, extraClasses
 }: IPageContainerProps): JSX.Element => {
-	const { loading, error }: any = useContext(Context);
+	const { loading, error, setError }: any = useContext(Context);
 
 	return (
 		<Page
 			loading={loading}
 			error={error}
+			setError={setError}
 			alignItems={alignItems}
 			justifyContent={justifyContent}
 			backgroundImage={backgroundImage}

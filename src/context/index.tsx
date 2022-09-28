@@ -10,8 +10,12 @@ import {
 import {
 	collection, doc, query, addDoc, getDoc, getDocs, onSnapshot, updateDoc, deleteDoc, orderBy, limit
 } from 'firebase/firestore';
+import {
+	NavigateFunction, useNavigate
+} from 'react-router-dom';
 import { IContextProps } from './IContextProps';
 import { IErrorProps } from '../utils/interfaces';
+import { validEmailRegex } from '../constants/validEmailRegex';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Context: React.Context<any> = createContext(null);
@@ -24,13 +28,19 @@ const ContextProvider = ({
 	setIsModalShown
 }: IContextProps) => {
 	const [navbarDisplayName, setNavbarDisplayName]: [string, Function] = useState<string>('');
-	const [error, setError]: [IErrorProps | undefined, Function] = useState<IErrorProps | undefined>({
-		message: 'iuybnn',
-		code: '797',
-		inputSetStates: []
-	});
-	const [loading, setLoading]: [boolean, Function] = useState<boolean>(false);
+	const [error, setError]: [IErrorProps | undefined, Function] = useState<IErrorProps | undefined>(undefined);
+	const [loading, setLoading]: [boolean, Function] = useState<boolean>(true);
 	const provider: GoogleAuthProvider = new GoogleAuthProvider();
+	const navigate: NavigateFunction = useNavigate();
+
+	// check if valid email
+	const checkValidEmail = (inputEmail: string): boolean => !!inputEmail.match(validEmailRegex);
+
+	// check if valid password
+	const checkValidPassword = (
+		inputPassword: string,
+		inputPasswordConfirm: string
+	) => !!(inputPassword.length > 8 && inputPassword === inputPasswordConfirm);
 
 	const handleOnChange = (event: ChangeEvent<HTMLInputElement>, setState: Function): void => {
 		setState(event.target.value);
@@ -295,6 +305,10 @@ const ContextProvider = ({
 	return (
 		<Context.Provider
 			value={{
+				auth,
+				db,
+				isModalShown,
+				setIsModalShown,
 				navbarDisplayName,
 				setNavbarDisplayName,
 				error,
@@ -313,11 +327,10 @@ const ContextProvider = ({
 				readAllDocumentsOnSnapshot,
 				updateDocument,
 				deleteDocument,
-				auth,
-				db,
-				isModalShown,
-				setIsModalShown,
-				handleOnChange
+				handleOnChange,
+				checkValidEmail,
+				checkValidPassword,
+				navigate
 			}}
 		>
 			{children}
@@ -329,7 +342,6 @@ export default ContextProvider;
 
 // TODO:
 // - test Login and Register works
-// - add icons to Login and Register buttons
 // - turn off dependancy cycle checking eslint and removed eslint comments
 
 // - Navbar
