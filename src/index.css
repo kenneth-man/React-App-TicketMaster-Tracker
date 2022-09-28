@@ -34,6 +34,17 @@
     }
 }
 
+/* avoid repeating same styling classes (creating classes using tailwind classes) */
+@layer components {
+    .col-space-1 {
+        @apply space-y-1 w-full sm:w-max
+    }
+
+    .col-space-4 {
+        @apply space-y-4 w-full sm:w-max
+    }
+}
+
 * {
     margin: 0;
     padding: 0;

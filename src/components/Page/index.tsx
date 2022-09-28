@@ -11,7 +11,7 @@ const Page = ({
 		alignItems={alignItems}
 		justifyContent={justifyContent}
 		extraClasses={`
-			flex-1
+			flex-1 py-16 px-4
 			${extraClasses}
 		`}
 		inlineStyle={

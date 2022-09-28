@@ -20,7 +20,7 @@ const Login = ({
 		justifyContent="justify-start"
 		backgroundImage={ticketMasterBackground}
 		isLoading={isLoading}
-		extraClasses="space-y-14 py-16 px-4"
+		extraClasses="space-y-14"
 	>
 		<img
 			src={ticketMasterLogo}
@@ -42,11 +42,11 @@ const Login = ({
 			</p>
 		</Column>
 		<form
-			className="flex flex-col items-center space-y-4 w-full sm:w-max"
+			className="flex flex-col items-center col-space-4"
 		>
 			<h1>Login with Email and Password</h1>
 			<Column
-				extraClasses="space-y-1 w-full sm:w-max"
+				extraClasses="col-space-1"
 			>
 				<label
 					htmlFor="loginEmail"
@@ -63,7 +63,7 @@ const Login = ({
 				/>
 			</Column>
 			<Column
-				extraClasses="space-y-1 w-full sm:w-max"
+				extraClasses="col-space-1"
 			>
 				<label
 					htmlFor="loginPassword"
@@ -87,7 +87,7 @@ const Login = ({
 			</CommonButton>
 		</form>
 		<Column
-			extraClasses="space-y-4 w-full sm:w-max"
+			extraClasses="col-space-4"
 		>
 			<h1>...Or login with your Google account</h1>
 			<CommonButton

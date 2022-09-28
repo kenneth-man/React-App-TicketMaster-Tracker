@@ -21,7 +21,7 @@ const Register = ({
 		justifyContent="justify-start"
 		backgroundImage={ticketMasterBackground2}
 		isLoading={isLoading}
-		extraClasses="space-y-14 py-16 px-4"
+		extraClasses="space-y-14"
 	>
 		<img
 			src={ticketMasterLogo}
@@ -29,11 +29,11 @@ const Register = ({
 			className="w-96 h-20 object-cover"
 		/>
 		<form
-			className="flex flex-col items-center space-y-4 w-full sm:w-max"
+			className="flex flex-col items-center col-space-4"
 		>
 			<h1>Register with Email and Password</h1>
 			<Column
-				extraClasses="space-y-1 w-full sm:w-max"
+				extraClasses="col-space-1"
 			>
 				<label
 					htmlFor="registerEmail"
@@ -50,7 +50,7 @@ const Register = ({
 				/>
 			</Column>
 			<Column
-				extraClasses="space-y-1 w-full sm:w-max"
+				extraClasses="col-space-1"
 			>
 				<label
 					htmlFor="registerPassword"
@@ -67,12 +67,12 @@ const Register = ({
 				/>
 			</Column>
 			<Column
-				extraClasses="space-y-1 w-full sm:w-max"
+				extraClasses="col-space-1"
 			>
 				<label
 					htmlFor="registerPasswordConfirm"
 				>
-					Password
+					Confirm Password
 				</label>
 				<CommonInput
 					state={registerPasswordConfirm}

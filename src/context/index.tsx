@@ -314,7 +314,6 @@ export default ContextProvider;
 // TODO:
 // - loginWithEmailAndPassword functionality to Login
 // - turn off dependancy cycle checking eslint and removed eslint comments
-// - Register and Login page refactor styling classes into a 'constants' file
 
 // - Navbar
 // - Mobile modal for Navbar
