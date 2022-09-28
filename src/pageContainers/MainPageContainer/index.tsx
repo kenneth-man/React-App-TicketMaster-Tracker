@@ -1,18 +1,19 @@
 /* eslint-disable import/no-cycle */
+import { Column } from '../../components';
 import { IMainPageContainerProps } from './IMainPageContainerProps';
 
 const MainPageContainer = ({
 	Component
 }: IMainPageContainerProps): JSX.Element => {
+	// eslint-disable-next-line no-console
 	console.log('logic goes here');
 
 	return (
-		<div
-			className="w-full h-full"
-			data-testid="MainPageContainer"
+		<Column
+			extraClasses="w-full h-full"
 		>
 			{Component && <Component />}
-		</div>
+		</Column>
 	);
 };
 

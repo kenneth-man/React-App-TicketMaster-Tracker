@@ -1,5 +1,9 @@
+import { PageContainer } from '../../componentContainers';
+
 const Details = (): JSX.Element => (
-	<div>Details</div>
+	<PageContainer>
+		details
+	</PageContainer>
 );
 
 export default Details;

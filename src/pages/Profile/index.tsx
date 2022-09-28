@@ -1,5 +1,9 @@
+import { PageContainer } from '../../componentContainers';
+
 const Profile = (): JSX.Element => (
-	<div>Profile</div>
+	<PageContainer>
+		home home home
+	</PageContainer>
 );
 
 export default Profile;

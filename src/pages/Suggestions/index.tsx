@@ -1,5 +1,9 @@
+import { PageContainer } from '../../componentContainers';
+
 const Suggestions = (): JSX.Element => (
-	<div>Suggestions</div>
+	<PageContainer>
+		suggestions
+	</PageContainer>
 );
 
 export default Suggestions;

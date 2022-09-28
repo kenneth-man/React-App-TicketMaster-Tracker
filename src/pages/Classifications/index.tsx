@@ -1,5 +1,9 @@
+import { PageContainer } from '../../componentContainers';
+
 const Classifications = (): JSX.Element => (
-	<div>Classifications</div>
+	<PageContainer>
+		classifications
+	</PageContainer>
 );
 
 export default Classifications;

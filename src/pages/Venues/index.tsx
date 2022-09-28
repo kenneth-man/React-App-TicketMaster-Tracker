@@ -1,5 +1,9 @@
+import { PageContainer } from '../../componentContainers';
+
 const Venues = (): JSX.Element => (
-	<div>Venues</div>
+	<PageContainer>
+		venues
+	</PageContainer>
 );
 
 export default Venues;

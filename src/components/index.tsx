@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 // each component file named 'index.tsx'; default file exported from directory
 // therefore no need to put extra '/' and declard file name
 import Banner from './Banner';

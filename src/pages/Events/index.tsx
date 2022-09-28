@@ -1,5 +1,9 @@
+import { PageContainer } from '../../componentContainers';
+
 const Events = (): JSX.Element => (
-	<div>Events</div>
+	<PageContainer>
+		events
+	</PageContainer>
 );
 
 export default Events;

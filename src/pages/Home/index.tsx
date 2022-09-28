@@ -1,5 +1,9 @@
+import { PageContainer } from '../../componentContainers';
+
 const Home = (): JSX.Element => (
-	<div>Home</div>
+	<PageContainer>
+		home
+	</PageContainer>
 );
 
 export default Home;

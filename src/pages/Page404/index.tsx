@@ -1,5 +1,9 @@
+import { PageContainer } from '../../componentContainers';
+
 const Page404 = (): JSX.Element => (
-	<div>Page404</div>
+	<PageContainer>
+		page404
+	</PageContainer>
 );
 
 export default Page404;
