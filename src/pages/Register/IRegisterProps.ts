@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEventHandler } from 'react';
+import { ChangeEvent, FormEventHandler } from 'react';
 
 export interface IRegisterProps {
     registerEmail: string;
@@ -8,6 +8,5 @@ export interface IRegisterProps {
     setRegisterPassword: Function;
     setRegisterPasswordConfirm: Function;
     handleOnChange: (event: ChangeEvent<HTMLInputElement>, setState: Function) => void;
-    registerWithEmailAndPassword: MouseEventHandler<HTMLButtonElement>;
-    isLoading: boolean;
+    registerWithEmailAndPassword: FormEventHandler<HTMLFormElement>;
 }

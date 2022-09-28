@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { ILoginProps } from './ILoginProps';
 import {
-	Page, Column, CommonInput, CommonButton, CommonLink
+	Column, CommonInput, CommonButton, CommonLink
 } from '../../components';
+import { PageContainer } from '../../componentContainers';
 import ticketMasterBackground from '../../res/images/ticketmaster-background.jpeg';
 import ticketMasterLogo from '../../res/images/ticketmaster-logo.png';
 
@@ -13,13 +14,11 @@ const Login = ({
 	setLoginPassword,
 	handleOnChange,
 	loginWithEmailAndPassword,
-	loginWithGoogle,
-	isLoading
+	loginWithGoogle
 }: ILoginProps): JSX.Element => (
-	<Page
+	<PageContainer
 		justifyContent="justify-start"
 		backgroundImage={ticketMasterBackground}
-		isLoading={isLoading}
 		extraClasses="space-y-14"
 	>
 		<img
@@ -42,6 +41,7 @@ const Login = ({
 			</p>
 		</Column>
 		<form
+			onSubmit={loginWithEmailAndPassword}
 			className="flex flex-col items-center col-space-4"
 		>
 			<h1>Login with Email and Password</h1>
@@ -80,8 +80,7 @@ const Login = ({
 				/>
 			</Column>
 			<CommonButton
-				onClick={loginWithEmailAndPassword}
-				type="button"
+				type="submit"
 			>
 				Login
 			</CommonButton>
@@ -104,7 +103,7 @@ const Login = ({
 		>
 			Don&apos;t have an account? Click here to Register!
 		</CommonLink>
-	</Page>
+	</PageContainer>
 );
 
 export default Login;

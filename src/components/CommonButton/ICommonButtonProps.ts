@@ -2,8 +2,8 @@ import { ReactNode, MouseEventHandler } from 'react';
 
 export interface ICommonButtonProps {
     children: ReactNode;
-    onClick: MouseEventHandler<HTMLButtonElement>;
     type: 'button' | 'submit' | 'reset' | undefined;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
     extraClasses?: string;
 }

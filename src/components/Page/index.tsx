@@ -1,9 +1,10 @@
+/* eslint-disable no-nested-ternary */
 import { IPageProps } from './IPageProps';
 // eslint-disable-next-line import/no-cycle
-import { Column, Loading } from '..';
+import { Column, Error, Loading } from '..';
 
 const Page = ({
-	children, isLoading, alignItems, justifyContent, backgroundImage, backgroundGradient,
+	children, loading, error, alignItems, justifyContent, backgroundImage, backgroundGradient,
 	backgroundSize, backgroundPosition, backgroundAttachment, backgroundRepeat, extraClasses
 }: IPageProps): JSX.Element => (
 	<Column
@@ -32,7 +33,15 @@ const Page = ({
 			)
 		}
 	>
-		{isLoading ? <Loading /> : children}
+		{
+			error
+				? <Error />
+				: (
+					loading
+						? <Loading />
+						: children
+				)
+		}
 	</Column>
 );
 

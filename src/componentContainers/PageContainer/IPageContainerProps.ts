@@ -1,10 +1,7 @@
 import { ReactNode } from 'react';
-import { IErrorProps } from '../../utils/interfaces';
 
-export interface IPageProps {
+export interface IPageContainerProps {
     children: ReactNode;
-    loading: boolean;
-    error: IErrorProps | undefined;
     alignItems?: 'items-start' | 'items-end' | 'items-center' | 'items-baseline' | 'items-stretch';
     justifyContent?: 'justify-start' | 'justify-end' | 'justify-center' | 'justify-between' | 'justify-around'
     | 'justify-evenly';

@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { IRegisterProps } from './IRegisterProps';
 import {
-	Page, CommonInput, CommonButton, Column
+	CommonInput, CommonButton, Column
 } from '../../components';
+import { PageContainer } from '../../componentContainers';
 import ticketMasterBackground2 from '../../res/images/ticketmaster-background-2.jpg';
 import ticketMasterLogo from '../../res/images/ticketmaster-logo.png';
 
@@ -14,13 +15,11 @@ const Register = ({
 	setRegisterPassword,
 	setRegisterPasswordConfirm,
 	handleOnChange,
-	registerWithEmailAndPassword,
-	isLoading
+	registerWithEmailAndPassword
 }: IRegisterProps): JSX.Element => (
-	<Page
+	<PageContainer
 		justifyContent="justify-start"
 		backgroundImage={ticketMasterBackground2}
-		isLoading={isLoading}
 		extraClasses="space-y-14"
 	>
 		<img
@@ -29,6 +28,7 @@ const Register = ({
 			className="w-96 h-20 object-cover"
 		/>
 		<form
+			onSubmit={registerWithEmailAndPassword}
 			className="flex flex-col items-center col-space-4"
 		>
 			<h1>Register with Email and Password</h1>
@@ -84,13 +84,12 @@ const Register = ({
 				/>
 			</Column>
 			<CommonButton
-				onClick={registerWithEmailAndPassword}
-				type="button"
+				type="submit"
 			>
 				Register
 			</CommonButton>
 		</form>
-	</Page>
+	</PageContainer>
 );
 
 export default Register;

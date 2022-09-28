@@ -18,3 +18,9 @@ export interface IFlexComponentProps {
 	extraClasses?: string;
 	inlineStyle?: Object;
 }
+
+export interface IErrorProps {
+	message: string;
+	code: string;
+	inputSetStates: Function[];
+}
