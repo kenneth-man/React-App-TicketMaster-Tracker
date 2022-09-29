@@ -25,7 +25,8 @@ const ContextProvider = ({
 	auth,
 	db,
 	isModalShown,
-	setIsModalShown
+	setIsModalShown,
+	isUserSignedIn
 }: IContextProps) => {
 	const [navbarDisplayName, setNavbarDisplayName]: [string, Function] = useState<string>('');
 	const [error, setError]: [IErrorProps | undefined, Function] = useState<IErrorProps | undefined>(undefined);
@@ -320,6 +321,7 @@ const ContextProvider = ({
 				loading,
 				setLoading,
 				location,
+				isUserSignedIn,
 				clearInputs,
 				scrollToTop,
 				scrollToBottom,
@@ -346,11 +348,11 @@ const ContextProvider = ({
 export default ContextProvider;
 
 // TODO:
-// - test Login and Register works (register doesn't navigate to home after registering)
+// - test Login and Register works (register doesn't navigate to home after registering, Login is slow - because not in euw region???)
 // - show loading on render instead of empty login/register page
 // - turn off dependancy cycle checking eslint and removed eslint comments
 
-// - Navbar
+// - Navbar (if logged in, render home and profile button in navbar, otherwise don't render them)
 // - Mobile modal for Navbar
 // - Home page react spring
 

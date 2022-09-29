@@ -15,8 +15,7 @@ import {
 	BrowserRouter, Routes, Route
 } from 'react-router-dom';
 import ContextProvider from './context';
-import { ModalContainer } from './componentContainers';
-import { Navbar } from './components';
+import { ModalContainer, NavbarContainer } from './componentContainers';
 import { routesData } from './constants/routesData';
 import { IRoutesDataProps } from './utils/interfaces';
 
@@ -54,8 +53,9 @@ const App = () => {
 					db={db}
 					isModalShown={isModalShown}
 					setIsModalShown={setIsModalShown}
+					isUserSignedIn={isUserSignedIn}
 				>
-					{isUserSignedIn && <Navbar />}
+					<NavbarContainer />
 
 					{/* rendering here instead of writing '{isModalShown && <Modal />}';
 					so i can transition the modal being displayed/hidden */}
