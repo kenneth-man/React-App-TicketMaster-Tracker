@@ -91,12 +91,13 @@ const ContextProvider = ({
 		}
 	};
 
-	// logout of account
-	const logout = async (): Promise<void> => {
+	// log out of account
+	const logOut = async (): Promise<void> => {
 		if (auth.currentUser) {
 			try {
 				await signOut(auth);
 				scrollToTop();
+				navigate('/');
 			} catch (error) {
 				setError(error);
 			}
@@ -321,7 +322,7 @@ const ContextProvider = ({
 				scrollToTop,
 				scrollToBottom,
 				loginWithGoogle,
-				logout,
+				logOut,
 				createDocument,
 				readAllDocuments,
 				readDocument,
@@ -343,7 +344,8 @@ const ContextProvider = ({
 export default ContextProvider;
 
 // TODO:
-// - test Login and Register works
+// - test Login and Register works (register doesn't navigate to home after registering)
+// - show loading on render instead of empty login/register page
 // - turn off dependancy cycle checking eslint and removed eslint comments
 
 // - Navbar

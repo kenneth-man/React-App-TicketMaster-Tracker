@@ -1,8 +1,15 @@
 import { PageContainer } from '../../componentContainers';
+import { IProfileProps } from './IProfileProps';
+import { CommonButton } from '../../components';
 
-const Profile = (): JSX.Element => (
+const Profile = ({ logOut }: IProfileProps): JSX.Element => (
 	<PageContainer>
-		home home home
+		<CommonButton
+			type="button"
+			onClick={(logOut)}
+		>
+			Log out
+		</CommonButton>
 	</PageContainer>
 );
 
