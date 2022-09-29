@@ -11,7 +11,7 @@ import {
 	collection, doc, query, addDoc, getDoc, getDocs, onSnapshot, updateDoc, deleteDoc, orderBy, limit
 } from 'firebase/firestore';
 import {
-	NavigateFunction, useNavigate
+	NavigateFunction, useNavigate, useLocation, Location
 } from 'react-router-dom';
 import { IContextProps } from './IContextProps';
 import { IErrorProps } from '../utils/interfaces';
@@ -32,6 +32,7 @@ const ContextProvider = ({
 	const [loading, setLoading]: [boolean, Function] = useState<boolean>(false);
 	const provider: GoogleAuthProvider = new GoogleAuthProvider();
 	const navigate: NavigateFunction = useNavigate();
+	const location: Location = useLocation();
 
 	// check if valid email
 	const checkValidEmail = (inputEmail: string): boolean => !!inputEmail.match(validEmailRegex);
@@ -318,6 +319,7 @@ const ContextProvider = ({
 				setError,
 				loading,
 				setLoading,
+				location,
 				clearInputs,
 				scrollToTop,
 				scrollToBottom,
