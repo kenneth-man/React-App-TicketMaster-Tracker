@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import BannerContainer from './BannerContainer';
 import ChannelContainer from './ChannelContainer';
 import CommentContainer from './CommentContainer';

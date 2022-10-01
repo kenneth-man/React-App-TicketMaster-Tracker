@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import Attractions from './Attractions';
 import Classifications from './Classifications';
 import Details from './Details';
