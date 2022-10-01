@@ -1,13 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-cycle */
-import { Row } from '..';
+import { Row, CommonLink } from '..';
 import { INavbarRoutesDataProps } from '../../utils/interfaces';
 import { INavbarProps } from './INavbarProps';
 
-const Navbar = ({ navbarData }: INavbarProps): JSX.Element => (
+const Navbar = ({ navbarData, auth }: INavbarProps): JSX.Element => (
 	<Row>
 		{
 			navbarData.map((curr: INavbarRoutesDataProps) => (
-				<
+				<div />
 			))
 		}
 	</Row>

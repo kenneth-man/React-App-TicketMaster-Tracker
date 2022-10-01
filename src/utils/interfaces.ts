@@ -9,8 +9,7 @@ export interface IRoutesDataProps {
 
 export interface INavbarRoutesDataProps {
 	path: string;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	Icon: any;
+	icon: ReactNode;
 	Component?: Function;
 	Container?: Function;
 }

@@ -23,36 +23,36 @@ export const navbarRoutesData: INavbarRoutesDataProps[] = [
 	{
 		path: '/',
 		Component: Home,
-		Icon: HomeIcon
+		icon: <HomeIcon />
 	},
 	{
 		path: '/Attractions',
 		Component: Attractions,
-		Icon: AttractionsIcon
+		icon: <AttractionsIcon />
 	},
 	{
 		path: '/Classifications',
 		Component: Classifications,
-		Icon: ClassificationsIcon
+		icon: <ClassificationsIcon />
 	},
 	{
 		path: '/Events',
 		Component: Events,
-		Icon: EventsIcon
+		icon: <EventsIcon />
 	},
 	{
 		path: '/Suggestions',
 		Component: Suggestions,
-		Icon: SuggestionsIcon
+		icon: <SuggestionsIcon />
 	},
 	{
 		path: '/Venues',
 		Component: Venues,
-		Icon: VenuesIcon
+		icon: <VenuesIcon />
 	},
 	{
 		path: '/Profile/:userName',
 		Container: ProfileContainer,
-		Icon: ProfileIcon
+		icon: <ProfileIcon />
 	}
 ];
