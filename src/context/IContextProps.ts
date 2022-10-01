@@ -7,5 +7,5 @@ export interface IContextProps {
 	db: any;
 	isModalShown: boolean;
 	setIsModalShown: Function;
-	isUserSignedIn: boolean;
+	isUserLoggedIn: boolean;
 }

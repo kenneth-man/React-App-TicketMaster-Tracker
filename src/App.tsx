@@ -38,12 +38,12 @@ const auth: any = getAuth(firebaseApp);
 const db: any = getFirestore(firebaseApp);
 
 const App = () => {
-	const [isUserSignedIn, setIsUserSignedIn]: [boolean, Function] = useState<boolean>(false);
+	const [isUserLoggedIn, setIsUserLoggedIn]: [boolean, Function] = useState<boolean>(false);
 	const [isModalShown, setIsModalShown]: [boolean, Function] = useState<boolean>(false);
 
 	// onAuthStateChanged parses a 'user' object in the callback function if signed in, otherwise 'user' is null;
 	// 'auth.currentUser' is the same as 'user'
-	onAuthStateChanged(auth, (user: any) => (setIsUserSignedIn(!!user)));
+	onAuthStateChanged(auth, (user: any) => (setIsUserLoggedIn(!!user)));
 
 	return (
 		<div className="flex flex-col h-full overflow-y-scroll overflow-x-hidden">
@@ -53,7 +53,7 @@ const App = () => {
 					db={db}
 					isModalShown={isModalShown}
 					setIsModalShown={setIsModalShown}
-					isUserSignedIn={isUserSignedIn}
+					isUserLoggedIn={isUserLoggedIn}
 				>
 					<NavbarContainer />
 
@@ -75,7 +75,7 @@ const App = () => {
 										element={
 											path === '/' || path === '/Register'
 												? (
-													isUserSignedIn
+													isUserLoggedIn
 														? (
 															<Container
 																Component={Component}

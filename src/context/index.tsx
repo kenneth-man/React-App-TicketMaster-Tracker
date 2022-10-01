@@ -26,7 +26,7 @@ const ContextProvider = ({
 	db,
 	isModalShown,
 	setIsModalShown,
-	isUserSignedIn
+	isUserLoggedIn
 }: IContextProps) => {
 	const [navbarDisplayName, setNavbarDisplayName]: [string, Function] = useState<string>('');
 	const [error, setError]: [IErrorProps | undefined, Function] = useState<IErrorProps | undefined>(undefined);
@@ -321,7 +321,7 @@ const ContextProvider = ({
 				loading,
 				setLoading,
 				location,
-				isUserSignedIn,
+				isUserLoggedIn,
 				clearInputs,
 				scrollToTop,
 				scrollToBottom,
@@ -351,6 +351,7 @@ export default ContextProvider;
 // - test Login and Register works (register doesn't navigate to home after registering, Login is slow - because not in euw region???)
 // - show loading on render instead of empty login/register page
 // - turn off dependancy cycle checking eslint and removed eslint comments
+// - DOES useMemo cause a rerender??
 
 // - Navbar (if logged in, render home and profile button in navbar, otherwise don't render them)
 // - Mobile modal for Navbar

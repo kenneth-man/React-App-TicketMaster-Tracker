@@ -7,6 +7,14 @@ export interface IRoutesDataProps {
 	ContainerAlt? : Function;
 }
 
+export interface INavbarRoutesDataProps {
+	path: string;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	Icon: any;
+	Component?: Function;
+	Container?: Function;
+}
+
 export interface IFlexComponentProps {
 	children: ReactNode;
 	fullWidth?: boolean;
