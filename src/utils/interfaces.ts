@@ -10,8 +10,7 @@ export interface IRoutesDataProps {
 export interface INavbarRoutesDataProps {
 	path: string;
 	icon: ReactNode;
-	Component?: Function;
-	Container?: Function;
+	text: string;
 }
 
 export interface IFlexComponentProps {

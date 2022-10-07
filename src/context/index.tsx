@@ -15,7 +15,7 @@ import {
 } from 'react-router-dom';
 import { IContextProps } from './IContextProps';
 import { IErrorProps } from '../utils/interfaces';
-import { validEmailRegex } from '../constants/validEmailRegex';
+import { validEmailRegexData } from '../constants/validEmailRegexData';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Context: React.Context<any> = createContext(null);
@@ -36,7 +36,7 @@ const ContextProvider = ({
 	const location: Location = useLocation();
 
 	// check if valid email
-	const checkValidEmail = (inputEmail: string): boolean => !!inputEmail.match(validEmailRegex);
+	const checkValidEmail = (inputEmail: string): boolean => !!inputEmail.match(validEmailRegexData);
 
 	// check if valid password
 	const checkValidPassword = (
@@ -349,10 +349,10 @@ export default ContextProvider;
 
 // TODO:
 // - test Login and Register works (register doesn't navigate to home after registering, Login is slow - because not in euw region???)
-// - show loading on render instead of empty login/register page
+// - show loading on render and refresh instead of empty login/register page
+// - Navbar check all navLinks correctly rendered and styled (if logged in, render home and profile button in navbar, otherwise don't render them)
 // - turn off dependancy cycle checking eslint and removed eslint comments
 
-// - Navbar (if logged in, render home and profile button in navbar, otherwise don't render them)
 // - Mobile modal for Navbar
 // - Home page react spring
 

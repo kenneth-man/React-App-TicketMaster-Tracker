@@ -1,13 +1,3 @@
-/* eslint-disable import/no-cycle */
-import {
-	Attractions,
-	Classifications,
-	Events,
-	Home,
-	Suggestions,
-	Venues
-} from '../pages';
-import { ProfileContainer } from '../pageContainers';
 import {
 	HomeIcon,
 	AttractionsIcon,
@@ -22,37 +12,37 @@ import { INavbarRoutesDataProps } from '../utils/interfaces';
 export const navbarRoutesData: INavbarRoutesDataProps[] = [
 	{
 		path: '/',
-		Component: Home,
-		icon: <HomeIcon />
+		icon: <HomeIcon />,
+		text: 'Home'
 	},
 	{
 		path: '/Attractions',
-		Component: Attractions,
-		icon: <AttractionsIcon />
+		icon: <AttractionsIcon />,
+		text: 'Attractions'
 	},
 	{
 		path: '/Classifications',
-		Component: Classifications,
-		icon: <ClassificationsIcon />
+		icon: <ClassificationsIcon />,
+		text: 'Classifications'
 	},
 	{
 		path: '/Events',
-		Component: Events,
-		icon: <EventsIcon />
+		icon: <EventsIcon />,
+		text: 'Events'
 	},
 	{
 		path: '/Suggestions',
-		Component: Suggestions,
-		icon: <SuggestionsIcon />
+		icon: <SuggestionsIcon />,
+		text: 'Suggestions'
 	},
 	{
 		path: '/Venues',
-		Component: Venues,
-		icon: <VenuesIcon />
+		icon: <VenuesIcon />,
+		text: 'Venues'
 	},
 	{
 		path: '/Profile/:userName',
-		Container: ProfileContainer,
-		icon: <ProfileIcon />
+		icon: <ProfileIcon />,
+		text: 'Profile'
 	}
 ];

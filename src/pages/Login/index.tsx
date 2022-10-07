@@ -8,6 +8,8 @@ import { ReactComponent as GoogleIcon } from '../../res/icons/google3.svg';
 import { ReactComponent as LoginIcon } from '../../res/icons/enter.svg';
 import ticketMasterBackground from '../../res/images/ticketmaster-background.jpeg';
 import ticketMasterLogo from '../../res/images/ticketmaster-logo.png';
+import { commonLinkType } from '../../utils/enums';
+import { logoStylesData } from '../../constants/logoStylesData';
 
 const Login = ({
 	loginEmail,
@@ -26,7 +28,7 @@ const Login = ({
 		<img
 			src={ticketMasterLogo}
 			alt="ticket master logo"
-			className="w-96 h-20 object-cover"
+			className={logoStylesData}
 		/>
 		<Column
 			fullWidth
@@ -101,7 +103,7 @@ const Login = ({
 			</CommonButton>
 		</Column>
 		<CommonLink
-			isRouterLink
+			type={commonLinkType.LINK}
 			href="/Register"
 			extraClasses="text-white text-center decoration-white"
 		>

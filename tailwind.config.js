@@ -5,6 +5,9 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				sans: ['Open Sans']
+			},
+			minHeight: {
+				16: '4rem'
 			}
 		}
 	},

@@ -4,3 +4,10 @@ export enum registerErrorMessage {
     INVALIDEMAIL = 'Invalid Email Address',
     INVALIDPASSWORD = 'Invalid Password (Passwords must be 8 or more characters long)'
 }
+
+export enum commonLinkType {
+	NAVLINK,
+	LINK,
+	LINKCLEAR,
+	ANCHOR
+}
