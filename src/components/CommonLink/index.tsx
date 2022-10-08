@@ -1,17 +1,25 @@
 import { NavLink, Link } from 'react-router-dom';
 import { ICommonLinkProps } from './ICommonLinkProps';
-import { commonLinkStylesData } from '../../constants/commonLinkStylesData';
+import { navLinkStylesData, linkStylesData } from '../../constants/commonLinkStylesData';
 import { commonLinkType } from '../../utils/enums';
 
 const CommonLink = ({
-	children, type, href, target, extraClasses
+	type, href, children, target, extraClasses
 }: ICommonLinkProps): JSX.Element => (
 	<>
 		{
 			type === commonLinkType.NAVLINK
 			&& (
 				<NavLink
-					className="flex items-center space-x-1 fill-white text-white"
+					className={
+						// eslint-disable-next-line @typescript-eslint/typedef
+						({ isActive }) => (
+							isActive
+								? `fill-blue-400 text-blue-400 decoration-blue-400 ${navLinkStylesData}`
+								: navLinkStylesData
+						)
+					}
+					end
 					to={href}
 				>
 					{children}
@@ -24,7 +32,7 @@ const CommonLink = ({
 				<Link
 					to={href}
 					className={`
-						${commonLinkStylesData}
+						${linkStylesData}
 						${extraClasses}
 					`}
 				>
@@ -37,9 +45,7 @@ const CommonLink = ({
 			&& (
 				<Link
 					to={href}
-					className={`
-						${extraClasses}
-					`}
+					className={extraClasses}
 				>
 					{children}
 				</Link>
@@ -52,7 +58,7 @@ const CommonLink = ({
 					href={href}
 					target={target || '_blank'}
 					className={`
-						${commonLinkStylesData}
+						${linkStylesData}
 						${extraClasses}
 					`}
 				>

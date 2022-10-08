@@ -350,7 +350,7 @@ export default ContextProvider;
 // TODO:
 // - test Login and Register works (register doesn't navigate to home after registering, Login is slow - because not in euw region???)
 // - show loading on render and refresh instead of empty login/register page
-// - Navbar check all navLinks correctly rendered and styled (if logged in, render home and profile button in navbar, otherwise don't render them)
+// - Navbar (if logged in, render home and profile button in navbar, otherwise don't render them)
 // - turn off dependancy cycle checking eslint and removed eslint comments
 
 // - Mobile modal for Navbar
