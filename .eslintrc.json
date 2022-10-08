@@ -163,6 +163,7 @@
 		}
 	},
 	"globals": {
-		"JSX": true
+		"JSX": true,
+		"NodeJS": true
 	}
 }

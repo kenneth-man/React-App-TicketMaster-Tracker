@@ -9,7 +9,7 @@ import ticketMasterLogo from '../../res/images/ticketmaster-logo.png';
 const Navbar = ({ navbarData, auth }: INavbarProps): JSX.Element => (
 	<Row
 		justifyContent="justify-between"
-		extraClasses="bg-black/75 pl-4 pr-6 min-h-16 h-16"
+		extraClasses="bg-black/75 pl-4 pr-6 min-h-16 h-16 border-b border-solid border-b-2 border-blue-400"
 	>
 		<CommonLink
 			type={commonLinkType.LINKCLEAR}
@@ -29,7 +29,11 @@ const Navbar = ({ navbarData, auth }: INavbarProps): JSX.Element => (
 					<CommonLink
 						key={curr.path}
 						type={commonLinkType.NAVLINK}
-						href={curr.path}
+						href={
+							curr.path.includes('/Profile')
+								? `${curr.path}/${auth.currentUser?.displayName}`
+								: curr.path
+						}
 					>
 						{curr.icon}
 						{curr.text}

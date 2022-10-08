@@ -19,7 +19,7 @@ const NavbarContainer = (): JSX.Element => {
 	};
 
 	const calcNonLoggedInNavbarElements = (): INavbarRoutesDataProps[] => navbarRoutesData.filter(
-		(curr: INavbarRoutesDataProps) => curr.path !== '/' && curr.path !== '/Profile/:userName'
+		(curr: INavbarRoutesDataProps) => curr.path !== '/' && curr.path !== '/Profile'
 	);
 
 	useEffect(() => {

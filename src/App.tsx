@@ -6,9 +6,9 @@
 // 1) create project on firebase.com, add the sign in methods you require
 // 2) enable firestore api and create firstore database on google cloud platform
 // 3) update database rules (permissions) https://stackoverflow.com/questions/46590155/firestore-permission-denied-missing-or-insufficient-permissions
-import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { initializeApp, FirebaseApp } from 'firebase/app';
+import { getAuth, onAuthStateChanged, Auth } from 'firebase/auth';
+import { getFirestore, Firestore } from 'firebase/firestore';
 
 import { useState } from 'react';
 import {
@@ -23,9 +23,9 @@ const {
 	REACT_APP_FIREBASE_API_KEY,
 	REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
 	REACT_APP_FIREBASE_APP_ID
-}: any = process.env;
+}: NodeJS.ProcessEnv = process.env;
 
-const firebaseApp: any = initializeApp({
+const firebaseApp: FirebaseApp = initializeApp({
 	apiKey: REACT_APP_FIREBASE_API_KEY,
 	authDomain: 'ticketmaster-tracker.firebaseapp.com',
 	projectId: 'ticketmaster-tracker',
@@ -34,8 +34,8 @@ const firebaseApp: any = initializeApp({
 	appId: REACT_APP_FIREBASE_APP_ID
 });
 
-const auth: any = getAuth(firebaseApp);
-const db: any = getFirestore(firebaseApp);
+const auth: Auth = getAuth(firebaseApp);
+const db: Firestore = getFirestore(firebaseApp);
 
 const App = () => {
 	const [isUserLoggedIn, setIsUserLoggedIn]: [boolean, Function] = useState<boolean>(false);

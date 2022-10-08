@@ -351,8 +351,8 @@ export default ContextProvider;
 // - test Login and Register works (register doesn't navigate to home after registering, Login is slow - because not in euw region???)
 // - show loading on render and refresh instead of empty login/register page
 // - Navbar (if logged in, render home and profile button in navbar, otherwise don't render them)
-// - turn off dependancy cycle checking eslint and removed eslint comments
 
+// - turn off dependancy cycle checking eslint and removed eslint comments
 // - Mobile modal for Navbar
 // - Home page react spring
 

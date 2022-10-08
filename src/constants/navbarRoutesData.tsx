@@ -41,7 +41,7 @@ export const navbarRoutesData: INavbarRoutesDataProps[] = [
 		text: 'Venues'
 	},
 	{
-		path: '/Profile/:userName',
+		path: '/Profile',
 		icon: <ProfileIcon />,
 		text: 'Profile'
 	}
