@@ -9,7 +9,7 @@ import { registerErrorMessage } from '../../utils/enums';
 
 const RegisterContainer = (): JSX.Element => {
 	const {
-		auth, setLoading, setError, handleOnChange, checkValidEmail, checkValidPassword// , navigate
+		auth, setLoading, setError, handleOnChange, checkValidEmail, checkValidPassword, navigate
 	}: any = useContext(Context);
 
 	const [registerEmail, setRegisterEmail]: [string, Function] = useState<string>('');
@@ -46,7 +46,7 @@ const RegisterContainer = (): JSX.Element => {
 
 			await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
 
-			// navigate('/');
+			navigate('/');
 		} catch (error: any) {
 			setError({
 				message: error.message,

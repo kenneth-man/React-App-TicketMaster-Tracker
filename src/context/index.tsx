@@ -16,6 +16,7 @@ import {
 import { IContextProps } from './IContextProps';
 import { IErrorProps } from '../utils/interfaces';
 import { validEmailRegexData } from '../constants/validEmailRegexData';
+import { placeholderProfileImageData } from '../constants/placeholderProfileImageData';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Context: React.Context<any> = createContext(null);
@@ -30,10 +31,11 @@ const ContextProvider = ({
 }: IContextProps) => {
 	const [navbarDisplayName, setNavbarDisplayName]: [string, Function] = useState<string>('');
 	const [error, setError]: [IErrorProps | undefined, Function] = useState<IErrorProps | undefined>(undefined);
-	const [loading, setLoading]: [boolean, Function] = useState<boolean>(false);
+	const [loading, setLoading]: [boolean, Function] = useState<boolean>(true);
 	const provider: GoogleAuthProvider = new GoogleAuthProvider();
 	const navigate: NavigateFunction = useNavigate();
 	const location: Location = useLocation();
+	const users: string = 'users';
 
 	// check if valid email
 	const checkValidEmail = (inputEmail: string): boolean => !!inputEmail.match(validEmailRegexData);
@@ -173,7 +175,7 @@ const ContextProvider = ({
 		try {
 			const response: any = await readAllDocuments(collectionName);
 			// return the currently signed in user's object in an array
-			if (collectionName === 'users') return response.filter((curr: any) => curr.uid === auth.currentUser.uid);
+			if (collectionName === users) return response.filter((curr: any) => curr.uid === auth.currentUser.uid);
 
 			return response;
 		} catch (error) {
@@ -236,7 +238,7 @@ const ContextProvider = ({
 	// check if a user already exists in the 'users' collection in firestore
 	const checkUserExists = async (email: string): Promise<any> => {
 		try {
-			const allUsers: any = await readAllDocuments('users');
+			const allUsers: any = await readAllDocuments(users);
 			const userAlreadyExists: any = allUsers ? allUsers.find((curr: any) => curr.email === email) : false;
 
 			return userAlreadyExists;
@@ -259,39 +261,48 @@ const ContextProvider = ({
 						email,
 						photoURL
 					}: any = auth.currentUser;
+					console.log('1) ', uid, displayName, email, photoURL);
 
 					const doesUserAlreadyExist: any = await checkUserExists(email);
+					console.log('2) ', doesUserAlreadyExist);
 
 					if (!doesUserAlreadyExist) {
-						// if registered via email, give the user a 'diplayName' and 'photoURL'; these properties come with google accounts
+						// if registered via email, give the user a 'diplayName' and 'photoURL';
+						// these properties come with google accounts
 						if (!displayName && !photoURL) {
 							const newDisplayName: string = email.split('@')[0];
-							// doesn't cause state change of 'auth' object so doesn't rerender components that use 'auth';
-							// therefore, have to set 'navbarDisplayName' manually and 'createDocument' with 'auth.currentUser.displayName', '...photoURL'
-							await updateProfile(auth.currentUser, {
-								displayName: newDisplayName,
-								photoURL: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
-							});
+
+							await updateProfile(
+								auth.currentUser,
+								{
+									displayName: newDisplayName,
+									photoURL: placeholderProfileImageData
+								}
+							);
 
 							setNavbarDisplayName(newDisplayName);
 						} else {
 							setNavbarDisplayName(displayName);
 						}
 
-						// add new user's document data containing default values where needed (desc,title...)
-						const docRefId: any = await createDocument('users', {
-							uid,
-							displayName: auth.currentUser.displayName,
-							email,
-							photoURL: auth.currentUser.photoURL,
-							description: '',
-							commentsIds: [],
-							savedIds: [],
-							remindMeIds: []
-						});
+						// add new user's document data with default values
+						const docRefId: any = await createDocument(
+							users,
+							{
+								uid,
+								displayName: auth.currentUser.displayName,
+								email,
+								photoURL: auth.currentUser.photoURL,
+								description: '',
+								commentsIds: [],
+								savedIds: [],
+								remindMeIds: []
+							}
+						);
 
-						// adding document id to newly created document; if key doesn't exist, 'updateDoc' creates one
-						await updateDocument('users', docRefId, 'id', docRefId, true);
+						// adding document id to newly created document;
+						// if key doesn't exist, 'updateDoc' creates one
+						await updateDocument(users, docRefId, 'id', docRefId, true);
 					}
 				}
 
@@ -302,6 +313,7 @@ const ContextProvider = ({
 
 	useEffect(() => {
 		if (error) {
+			console.log(error);
 			clearInputs(error.inputSetStates);
 			setLoading(false);
 		}
@@ -348,10 +360,9 @@ const ContextProvider = ({
 export default ContextProvider;
 
 // TODO:
-// - test Login and Register works (register doesn't navigate to home after registering, Login is slow - because not in euw region???)
-// - show loading on render and refresh instead of empty login/register page
-// - Navbar (if logged in, render home and profile button in navbar, otherwise don't render them)
+// - test Login and Register works (register and google register bugs (updateDocument funciton not working))
 
+// - type context functions
 // - turn off dependancy cycle checking eslint and removed eslint comments
 // - Mobile modal for Navbar
 // - Home page react spring

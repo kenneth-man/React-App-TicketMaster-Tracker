@@ -4,9 +4,9 @@ import { IMainPageContainerProps } from './IMainPageContainerProps';
 
 const MainPageContainer = ({
 	Component
+// eslint-disable-next-line arrow-body-style
 }: IMainPageContainerProps): JSX.Element => {
-	// eslint-disable-next-line no-console
-	console.log('logic goes here');
+	// logic goes here
 
 	return (
 		<Column
