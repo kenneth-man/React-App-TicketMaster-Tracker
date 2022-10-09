@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, {
@@ -8,7 +8,8 @@ import {
 	signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, updateProfile
 } from 'firebase/auth';
 import {
-	collection, doc, query, addDoc, getDoc, getDocs, onSnapshot, updateDoc, deleteDoc, orderBy, limit
+	collection, doc, query, addDoc, getDoc, getDocs, onSnapshot, updateDoc, deleteDoc,
+	orderBy, limit, DocumentReference, DocumentData, QuerySnapshot, Unsubscribe
 } from 'firebase/firestore';
 import {
 	NavigateFunction, useNavigate, useLocation, Location
@@ -112,9 +113,11 @@ const ContextProvider = ({
 	const createDocument = async (
 		collectionName: string,
 		dataObj: any
-	): Promise<void> => {
+	): Promise<string | undefined> => {
 		try {
-			await addDoc(collection(db, collectionName), dataObj);
+			const documentReference: DocumentReference<any> = await addDoc(collection(db, collectionName), dataObj);
+
+			return documentReference.id;
 		} catch (error) {
 			setError(error);
 		}
@@ -127,20 +130,27 @@ const ContextProvider = ({
 		limitedBy: number = 0
 	): Promise<any> => {
 		try {
-			let allDocuments: any;
+			let allDocuments: QuerySnapshot<DocumentData> | undefined;
 			const returnArray: any = [];
 
-			// eslint-disable-next-line no-nested-ternary
 			orderedBy
 				? (
 					limitedBy
-						? allDocuments = await getDocs(query(collection(db, collectionName), orderBy(orderedBy), limit(limitedBy)))
-						: allDocuments = await getDocs(query(collection(db, collectionName), orderBy(orderedBy)))
+						? allDocuments = await getDocs(
+							query(collection(db, collectionName), orderBy(orderedBy), limit(limitedBy))
+						)
+						: allDocuments = await getDocs(
+							query(collection(db, collectionName), orderBy(orderedBy))
+						)
 				)
 				: (
 					limitedBy
-						? allDocuments = await getDocs(query(collection(db, collectionName), limit(limitedBy)))
-						: allDocuments = await getDocs(query(collection(db, collectionName)))
+						? allDocuments = await getDocs(
+							query(collection(db, collectionName), limit(limitedBy))
+						)
+						: allDocuments = await getDocs(
+							query(collection(db, collectionName))
+						)
 				);
 
 			allDocuments.forEach((doc: any) => returnArray.push({
@@ -191,7 +201,8 @@ const ContextProvider = ({
 		// query method used for specifying which documents you want to retrieve from a collection
 		const messagesQuery: any = query(collection(db, collectionName), orderBy(orderedBy), limit(1000));
 
-		// onSnapshot doesn't return promise and means you're attaching a permanent listener that listens for realtime updates; 'getDocs' returns promise and gets data once
+		// onSnapshot doesn't return promise and means you're attaching a permanent listener that
+		// listens for realtime updates; 'getDocs' returns a promise and gets data once
 		onSnapshot(messagesQuery, (snapshot: any) => {
 			const returnArray: any = [];
 
@@ -207,20 +218,22 @@ const ContextProvider = ({
 	// UPDATE
 	const updateDocument = async (
 		collectionName: string,
-		documentId: string,
+		documentId: string | undefined,
 		key: string,
 		value: any,
 		overwriteField: boolean = true
 	): Promise<void> => {
 		try {
-			const field: any = {};
-			const existingDocumentData: any = await readDocument(collectionName, documentId);
+			if (documentId) {
+				const field: any = {};
+				const existingDocumentData: any = await readDocument(collectionName, documentId);
 
-			overwriteField
-				? field[key] = value
-				: field[key] = [...existingDocumentData[key], value];
+				overwriteField
+					? field[key] = value
+					: field[key] = [...existingDocumentData[key], value];
 
-			await updateDoc(doc(db, collectionName, documentId), field);
+				await updateDoc(doc(db, collectionName, documentId), field);
+			}
 		} catch (error) {
 			setError(error);
 		}
@@ -236,10 +249,11 @@ const ContextProvider = ({
 	};
 
 	// check if a user already exists in the 'users' collection in firestore
-	const checkUserExists = async (email: string): Promise<any> => {
+	const checkUserExists = async (uid: string): Promise<boolean | undefined> => {
 		try {
 			const allUsers: any = await readAllDocuments(users);
-			const userAlreadyExists: any = allUsers ? allUsers.find((curr: any) => curr.email === email) : false;
+
+			const userAlreadyExists: boolean = !!allUsers.find((curr: any) => curr.uid === uid);
 
 			return userAlreadyExists;
 		} catch (error) {
@@ -247,11 +261,10 @@ const ContextProvider = ({
 		}
 	};
 
-	// 'onAuthStateChanged()' observer to add a user obj to 'users' collection whenever a user is signed in, only if it's their first time registering via email/signing in via google
-	// using a useEffect single run because only want call the 'onAuthStateChanged()' one time on component render, otherwise it will run multiple times;
-	// https://stackoverflow.com/questions/60090298/firebase-auth-onauthstatechanged-function-is-called-multiple-times-even-afte
+	// 'onAuthStateChanged()' observer to add a user object to the 'users' collection whenever a user is signed in,
+	// only if it's their first time registering via email/signing in via google;
 	useEffect(() => {
-		onAuthStateChanged(
+		const unsubscribe: Unsubscribe = onAuthStateChanged(
 			auth,
 			async (user: any) => {
 				if (user) {
@@ -261,10 +274,8 @@ const ContextProvider = ({
 						email,
 						photoURL
 					}: any = auth.currentUser;
-					console.log('1) ', uid, displayName, email, photoURL);
 
-					const doesUserAlreadyExist: any = await checkUserExists(email);
-					console.log('2) ', doesUserAlreadyExist);
+					const doesUserAlreadyExist: boolean | undefined = await checkUserExists(uid);
 
 					if (!doesUserAlreadyExist) {
 						// if registered via email, give the user a 'diplayName' and 'photoURL';
@@ -286,7 +297,7 @@ const ContextProvider = ({
 						}
 
 						// add new user's document data with default values
-						const docRefId: any = await createDocument(
+						const docRefId: string | undefined = await createDocument(
 							users,
 							{
 								uid,
@@ -309,11 +320,12 @@ const ContextProvider = ({
 				setLoading(false);
 			}
 		);
+
+		return () => unsubscribe();
 	}, []);
 
 	useEffect(() => {
 		if (error) {
-			console.log(error);
 			clearInputs(error.inputSetStates);
 			setLoading(false);
 		}
@@ -361,8 +373,8 @@ export default ContextProvider;
 
 // TODO:
 // - test Login and Register works (register and google register bugs (updateDocument funciton not working))
-
 // - type context functions
+
 // - turn off dependancy cycle checking eslint and removed eslint comments
 // - Mobile modal for Navbar
 // - Home page react spring
