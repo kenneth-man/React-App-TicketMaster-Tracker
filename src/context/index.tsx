@@ -9,7 +9,8 @@ import {
 } from 'firebase/auth';
 import {
 	collection, doc, query, addDoc, getDoc, getDocs, onSnapshot, updateDoc, deleteDoc,
-	orderBy, limit, DocumentReference, DocumentData, QuerySnapshot, Unsubscribe
+	orderBy, limit, DocumentReference, DocumentData, QuerySnapshot, DocumentSnapshot, Query,
+	Unsubscribe
 } from 'firebase/firestore';
 import {
 	NavigateFunction, useNavigate, useLocation, Location
@@ -47,7 +48,11 @@ const ContextProvider = ({
 		inputPasswordConfirm: string
 	) => !!(inputPassword.length > 8 && inputPassword === inputPasswordConfirm);
 
-	const handleOnChange = (event: ChangeEvent<HTMLInputElement>, setState: Function): void => {
+	// setState the input element value
+	const handleOnChange = (
+		event: ChangeEvent<HTMLInputElement>,
+		setState: Function
+	): void => {
 		setState(event.target.value);
 	};
 
@@ -84,7 +89,7 @@ const ContextProvider = ({
 		}
 	};
 
-	// login account with google account
+	// login with google account
 	const loginWithGoogle = async (): Promise<void> => {
 		if (!auth.currentUser) {
 			try {
@@ -96,7 +101,7 @@ const ContextProvider = ({
 		}
 	};
 
-	// log out of account
+	// logout of account then navigate to '/' path
 	const logOut = async (): Promise<void> => {
 		if (auth.currentUser) {
 			try {
@@ -112,12 +117,33 @@ const ContextProvider = ({
 	// CREATE
 	const createDocument = async (
 		collectionName: string,
-		dataObj: any
+		dataObject: {
+			[property: string]: string | string[];
+		}
 	): Promise<string | undefined> => {
 		try {
-			const documentReference: DocumentReference<any> = await addDoc(collection(db, collectionName), dataObj);
+			const documentReference: DocumentReference = await addDoc(
+				collection(db, collectionName),
+				dataObject
+			);
 
 			return documentReference.id;
+		} catch (error) {
+			setError(error);
+		}
+	};
+
+	// READ ONCE
+	const readDocument = async (
+		collectionName: string,
+		documentId: string
+	): Promise<DocumentData | undefined> => {
+		try {
+			const document: DocumentSnapshot<DocumentData> = await getDoc(
+				doc(db, collectionName, documentId)
+			);
+
+			return document.data();
 		} catch (error) {
 			setError(error);
 		}
@@ -128,34 +154,46 @@ const ContextProvider = ({
 		collectionName: string,
 		orderedBy: string = '',
 		limitedBy: number = 0
-	): Promise<any> => {
+	): Promise<DocumentData[] | undefined> => {
 		try {
-			let allDocuments: QuerySnapshot<DocumentData> | undefined;
-			const returnArray: any = [];
+			let allDocuments: QuerySnapshot<DocumentData>;
+			const returnArray: DocumentData[] = [];
 
 			orderedBy
 				? (
 					limitedBy
 						? allDocuments = await getDocs(
-							query(collection(db, collectionName), orderBy(orderedBy), limit(limitedBy))
+							query(
+								collection(db, collectionName),
+								orderBy(orderedBy),
+								limit(limitedBy)
+							)
 						)
 						: allDocuments = await getDocs(
-							query(collection(db, collectionName), orderBy(orderedBy))
+							query(
+								collection(db, collectionName),
+								orderBy(orderedBy)
+							)
 						)
 				)
 				: (
 					limitedBy
 						? allDocuments = await getDocs(
-							query(collection(db, collectionName), limit(limitedBy))
+							query(
+								collection(db, collectionName),
+								limit(limitedBy)
+							)
 						)
 						: allDocuments = await getDocs(
-							query(collection(db, collectionName))
+							query(
+								collection(db, collectionName)
+							)
 						)
 				);
 
-			allDocuments.forEach((doc: any) => returnArray.push({
-				...doc.data(),
-				id: doc.id
+			allDocuments.forEach((document: DocumentData) => returnArray.push({
+				...document.data(),
+				id: document.id
 			}));
 
 			return returnArray;
@@ -164,30 +202,21 @@ const ContextProvider = ({
 		}
 	};
 
-	// READ
-	const readDocument = async (
-		collectionName: string,
-		documentId: string
-	): Promise<any> => {
-		try {
-			const document: any = await getDoc(doc(db, collectionName, documentId));
-
-			return document.data();
-		} catch (error) {
-			setError(error);
-		}
-	};
-
-	// READ WITHOUT KNOWING DOC ID
+	// READ COLLECTION ONCE WITHOUT KNOWING DOC ID
 	const readDocumentWoId = async (
 		collectionName: string
-	): Promise<any> => {
+	): Promise<DocumentData[] | undefined> => {
 		try {
-			const response: any = await readAllDocuments(collectionName);
-			// return the currently signed in user's object in an array
-			if (collectionName === users) return response.filter((curr: any) => curr.uid === auth.currentUser.uid);
+			const response: DocumentData[] | undefined = await readAllDocuments(collectionName);
 
-			return response;
+			if (response) {
+				// return the currently signed in user's object in an array
+				if (collectionName === users) {
+					return response.filter((curr: DocumentData) => curr.uid === auth.currentUser.uid);
+				}
+
+				return response;
+			}
 		} catch (error) {
 			setError(error);
 		}
@@ -197,42 +226,55 @@ const ContextProvider = ({
 	const readAllDocumentsOnSnapshot = (
 		collectionName: string,
 		orderedBy: string
-	): any => {
-		// query method used for specifying which documents you want to retrieve from a collection
-		const messagesQuery: any = query(collection(db, collectionName), orderBy(orderedBy), limit(1000));
+	): void => {
+		try {
+			// query method used for specifying which documents you want to retrieve from a collection
+			const messagesQuery: Query<DocumentData> = query(
+				collection(db, collectionName),
+				orderBy(orderedBy),
+				limit(1000)
+			);
 
-		// onSnapshot doesn't return promise and means you're attaching a permanent listener that
-		// listens for realtime updates; 'getDocs' returns a promise and gets data once
-		onSnapshot(messagesQuery, (snapshot: any) => {
-			const returnArray: any = [];
+			// onSnapshot doesn't return promise and means you're attaching a permanent listener that
+			// listens for realtime updates; 'getDocs' returns a promise and gets data once
+			onSnapshot(messagesQuery, (snapshot: QuerySnapshot<DocumentData>) => {
+				const returnArray: DocumentData[] = [];
 
-			snapshot.forEach((doc: any) => returnArray.push({
-				...doc.data(),
-				id: doc.id
-			}));
+				snapshot.forEach((document: DocumentData) => returnArray.push({
+					...document.data(),
+					id: document.id
+				}));
 
-			return returnArray;
-		});
+				return returnArray;
+			});
+		} catch (error) {
+			setError(error);
+		}
 	};
 
 	// UPDATE
 	const updateDocument = async (
 		collectionName: string,
-		documentId: string | undefined,
+		documentId: string,
 		key: string,
 		value: any,
 		overwriteField: boolean = true
 	): Promise<void> => {
 		try {
-			if (documentId) {
-				const field: any = {};
-				const existingDocumentData: any = await readDocument(collectionName, documentId);
+			const existingDocumentData: DocumentData | undefined = await readDocument(collectionName, documentId);
 
-				overwriteField
-					? field[key] = value
-					: field[key] = [...existingDocumentData[key], value];
-
-				await updateDoc(doc(db, collectionName, documentId), field);
+			if (existingDocumentData) {
+				await updateDoc(
+					doc(db, collectionName, documentId),
+					{
+						[key]: overwriteField
+							? value
+							: [
+								...existingDocumentData[key],
+								value
+							]
+					}
+				);
 			}
 		} catch (error) {
 			setError(error);
@@ -240,9 +282,14 @@ const ContextProvider = ({
 	};
 
 	// DELETE
-	const deleteDocument = async (collectionName: string, documentId: string): Promise<void> => {
+	const deleteDocument = async (
+		collectionName: string,
+		documentId: string
+	): Promise<void> => {
 		try {
-			await deleteDoc(doc(db, collectionName, documentId));
+			await deleteDoc(
+				doc(db, collectionName, documentId)
+			);
 		} catch (error) {
 			setError(error);
 		}
@@ -251,9 +298,13 @@ const ContextProvider = ({
 	// check if a user already exists in the 'users' collection in firestore
 	const checkUserExists = async (uid: string): Promise<boolean | undefined> => {
 		try {
-			const allUsers: any = await readAllDocuments(users);
+			const allUsers: DocumentData[] | undefined = await readAllDocuments(users);
 
-			const userAlreadyExists: boolean = !!allUsers.find((curr: any) => curr.uid === uid);
+			let userAlreadyExists: boolean = false;
+
+			if (allUsers) {
+				userAlreadyExists = !!allUsers.find((curr: DocumentData) => curr.uid === uid);
+			}
 
 			return userAlreadyExists;
 		} catch (error) {
@@ -273,7 +324,9 @@ const ContextProvider = ({
 						displayName,
 						email,
 						photoURL
-					}: any = auth.currentUser;
+					}: {
+						[property: string]: string;
+					} = auth.currentUser;
 
 					const doesUserAlreadyExist: boolean | undefined = await checkUserExists(uid);
 
@@ -311,9 +364,11 @@ const ContextProvider = ({
 							}
 						);
 
-						// adding document id to newly created document;
-						// if key doesn't exist, 'updateDoc' creates one
-						await updateDocument(users, docRefId, 'id', docRefId, true);
+						if (docRefId) {
+							// adding document id to newly created document;
+							// if key doesn't exist, 'updateDoc' creates one
+							await updateDocument(users, docRefId, 'id', docRefId, true);
+						}
 					}
 				}
 
@@ -372,9 +427,6 @@ const ContextProvider = ({
 export default ContextProvider;
 
 // TODO:
-// - test Login and Register works (register and google register bugs (updateDocument funciton not working))
-// - type context functions
-
 // - turn off dependancy cycle checking eslint and removed eslint comments
 // - Mobile modal for Navbar
 // - Home page react spring
