@@ -4,6 +4,7 @@ import {
 	CommonInput, CommonButton, Column
 } from '../../components';
 import { PageContainer } from '../../componentContainers';
+import { commonButtonType } from '../../utils/enums';
 import { ReactComponent as RegisterIcon } from '../../res/icons/enter.svg';
 import ticketMasterBackground2 from '../../res/images/ticketmaster-background-2.jpg';
 import ticketMasterLogo from '../../res/images/ticketmaster-logo.png';
@@ -86,6 +87,7 @@ const Register = ({
 			</Column>
 			<CommonButton
 				type="submit"
+				buttonType={commonButtonType.STANDARD}
 			>
 				<h2>Register</h2>
 				<RegisterIcon />

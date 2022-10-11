@@ -11,3 +11,8 @@ export enum commonLinkType {
 	LINKCLEAR,
 	ANCHOR
 }
+
+export enum commonButtonType {
+	STANDARD,
+	CLEAR
+}

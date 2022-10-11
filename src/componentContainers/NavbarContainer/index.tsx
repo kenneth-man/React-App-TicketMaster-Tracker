@@ -7,7 +7,9 @@ import { INavbarRoutesDataProps } from '../../utils/interfaces';
 import { navbarRoutesData } from '../../constants/navbarRoutesData';
 
 const NavbarContainer = (): JSX.Element => {
-	const { auth, isUserLoggedIn, location }: any = useContext(Context);
+	const {
+		auth, isUserLoggedIn, location, isModalShown, setIsModalShown
+	}: any = useContext(Context);
 	const [navbarData, setNavbarData]: [INavbarRoutesDataProps[], Function] = useState<INavbarRoutesDataProps[]>([]);
 
 	const calcShouldShowNavbar = (): boolean => {
@@ -21,6 +23,8 @@ const NavbarContainer = (): JSX.Element => {
 	const calcNonLoggedInNavbarElements = (): INavbarRoutesDataProps[] => navbarRoutesData.filter(
 		(curr: INavbarRoutesDataProps) => curr.path !== '/' && curr.path !== '/Profile'
 	);
+
+	const toggleIsModalShown = (): void => setIsModalShown(!isModalShown);
 
 	useEffect(() => {
 		if (!isUserLoggedIn) {
@@ -38,6 +42,7 @@ const NavbarContainer = (): JSX.Element => {
 			<Navbar
 				navbarData={navbarData}
 				auth={auth}
+				toggleIsModalShown={toggleIsModalShown}
 			/>
 		)
 	);

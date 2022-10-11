@@ -8,7 +8,7 @@ import { ReactComponent as GoogleIcon } from '../../res/icons/google3.svg';
 import { ReactComponent as LoginIcon } from '../../res/icons/enter.svg';
 import ticketMasterBackground from '../../res/images/ticketmaster-background.jpeg';
 import ticketMasterLogo from '../../res/images/ticketmaster-logo.png';
-import { commonLinkType } from '../../utils/enums';
+import { commonLinkType, commonButtonType } from '../../utils/enums';
 import { logoStylesData } from '../../constants/logoStylesData';
 
 const Login = ({
@@ -85,6 +85,7 @@ const Login = ({
 			</Column>
 			<CommonButton
 				type="submit"
+				buttonType={commonButtonType.STANDARD}
 			>
 				<h2>Login</h2>
 				<LoginIcon />
@@ -95,8 +96,9 @@ const Login = ({
 		>
 			<h1>...Or login with your Google account</h1>
 			<CommonButton
-				onClick={loginWithGoogle}
 				type="button"
+				buttonType={commonButtonType.STANDARD}
+				onClick={loginWithGoogle}
 			>
 				<h2>Google Login</h2>
 				<GoogleIcon />

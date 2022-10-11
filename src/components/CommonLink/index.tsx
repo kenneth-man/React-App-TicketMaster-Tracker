@@ -15,8 +15,8 @@ const CommonLink = ({
 						// eslint-disable-next-line @typescript-eslint/typedef
 						({ isActive }) => (
 							isActive
-								? `fill-blue-400 text-blue-400 decoration-blue-400 ${navLinkStylesData}`
-								: navLinkStylesData
+								? `fill-blue-400 text-blue-400 decoration-blue-400 ${navLinkStylesData} ${extraClasses}`
+								: `${navLinkStylesData} ${extraClasses}`
 						)
 					}
 					end
