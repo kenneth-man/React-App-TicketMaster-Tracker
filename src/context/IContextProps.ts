@@ -5,7 +5,5 @@ export interface IContextProps {
 	children: ReactNode;
 	auth: any;
 	db: any;
-	isModalShown: boolean;
-	setIsModalShown: Function;
 	isUserLoggedIn: boolean;
 }

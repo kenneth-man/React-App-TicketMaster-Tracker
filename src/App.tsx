@@ -39,7 +39,6 @@ const db: Firestore = getFirestore(firebaseApp);
 
 const App = () => {
 	const [isUserLoggedIn, setIsUserLoggedIn]: [boolean, Function] = useState<boolean>(false);
-	const [isModalShown, setIsModalShown]: [boolean, Function] = useState<boolean>(false);
 
 	// onAuthStateChanged parses a 'user' object in the callback function if signed in, otherwise 'user' is null;
 	// 'auth.currentUser' is the same as 'user'
@@ -51,8 +50,6 @@ const App = () => {
 				<ContextProvider
 					auth={auth}
 					db={db}
-					isModalShown={isModalShown}
-					setIsModalShown={setIsModalShown}
 					isUserLoggedIn={isUserLoggedIn}
 				>
 					<NavbarContainer />

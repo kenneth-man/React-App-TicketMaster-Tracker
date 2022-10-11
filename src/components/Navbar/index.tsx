@@ -7,7 +7,9 @@ import { commonLinkType, commonButtonType } from '../../utils/enums';
 import ticketMasterLogo from '../../res/images/ticketmaster-logo.png';
 import { ReactComponent as MenuIcon } from '../../res/icons/menu.svg';
 
-const Navbar = ({ navbarData, auth, toggleIsModalShown }: INavbarProps): JSX.Element => (
+const Navbar = ({
+	navbarData, auth, isModalShown, toggleIsModalShown
+}: INavbarProps): JSX.Element => (
 	<Row
 		justifyContent="justify-between"
 		extraClasses="bg-black/75 pl-4 pr-6 min-h-16 h-16 border-b border-solid border-b-2 border-blue-400"
@@ -49,7 +51,7 @@ const Navbar = ({ navbarData, auth, toggleIsModalShown }: INavbarProps): JSX.Ele
 			onClick={toggleIsModalShown}
 			extraClasses="block lg:hidden fill-blue-400"
 		>
-			<MenuIcon />
+			{!isModalShown && <MenuIcon />}
 		</CommonButton>
 	</Row>
 );

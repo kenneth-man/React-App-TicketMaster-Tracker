@@ -27,13 +27,12 @@ const ContextProvider = ({
 	children,
 	auth,
 	db,
-	isModalShown,
-	setIsModalShown,
 	isUserLoggedIn
 }: IContextProps) => {
 	const [navbarDisplayName, setNavbarDisplayName]: [string, Function] = useState<string>('');
 	const [error, setError]: [IErrorProps | undefined, Function] = useState<IErrorProps | undefined>(undefined);
 	const [loading, setLoading]: [boolean, Function] = useState<boolean>(true);
+	const [isModalShown, setIsModalShown]: [boolean, Function] = useState<boolean>(false);
 	const provider: GoogleAuthProvider = new GoogleAuthProvider();
 	const navigate: NavigateFunction = useNavigate();
 	const location: Location = useLocation();

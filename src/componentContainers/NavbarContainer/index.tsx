@@ -42,6 +42,7 @@ const NavbarContainer = (): JSX.Element => {
 			<Navbar
 				navbarData={navbarData}
 				auth={auth}
+				isModalShown={isModalShown}
 				toggleIsModalShown={toggleIsModalShown}
 			/>
 		)
