@@ -12,7 +12,7 @@ const Navbar = ({
 }: INavbarProps): JSX.Element => (
 	<Row
 		justifyContent="justify-between"
-		extraClasses="bg-black/75 pl-4 pr-6 min-h-16 h-16 border-b border-solid border-b-2 border-blue-400"
+		extraClasses="bg-black/75 pl-4 pr-6 min-h-16 h-16 border-b border-solid border-b-[1px] border-blue-400"
 	>
 		<CommonLink
 			type={commonLinkType.LINKCLEAR}
